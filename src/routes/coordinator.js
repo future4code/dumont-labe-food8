@@ -13,3 +13,4 @@ export const goToHome = (history) => {
 export const goToRestaurantsDetails = (history, id) => {
   history.push(`/restaurants/${id}`)
 }
+

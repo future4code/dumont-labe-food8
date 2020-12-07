@@ -20,12 +20,6 @@ body {
   background: #FFFFFF;
 }
 
-@media(min-width: 700px) {
-  :root {
-    font-size: 62.5%;
-  }
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

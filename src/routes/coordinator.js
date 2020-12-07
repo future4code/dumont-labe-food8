@@ -7,7 +7,7 @@ export const goToSignUp = (history) => {
 }
 
 export const goToHome = (history) => {
-  history.push('/')
+  history.push('/home')
 }
 
 export const goToRestaurantsDetails = (history, id) => {

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
-/*Serviços*/
-import api from '../services/api';
+// /*Serviços*/
+// import api from '../services/api';
 
 /*Context*/
 import GlobalStateContext from "./GlobalStateContext";

@@ -16,7 +16,7 @@ export default function Profile() {
     <React.Fragment>
       {page ? <EditProfile /> :
         <Container>
-          <Header></Header>
+          {/* <Header></Header> */}
           <BoxInline>
             <Box>
               <Name>Endereço de entrega</Name>

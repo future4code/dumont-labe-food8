@@ -6,7 +6,7 @@ export default function EditProfile() {
 
   return (
     <Container>
-      <Header></Header>
+      {/* <Header></Header> */}
       <FormContainer>
 
         <TextFieldStyled

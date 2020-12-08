@@ -9,15 +9,19 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../constants/theme';
 
 import React from 'react';
+import Header from '../constants/Header';
 
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalState>
         <BrowserRouter>
-          <Router />
+          <Router>
+            <Header/>
+          </Router>
         </BrowserRouter>
       </GlobalState>
     </ThemeProvider>
   );
 }
+

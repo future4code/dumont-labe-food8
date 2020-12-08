@@ -36,7 +36,7 @@ import React from 'react';
 export default function Header() {
   return (    
         <Bar>
-            <Title>Header</Title>
+            <Title>teste</Title>
         </Bar>   
   );
 }

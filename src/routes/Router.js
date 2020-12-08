@@ -14,9 +14,9 @@ import Profile from '../pages/Profile';
 export default function Router() {
     return (
         <Switch>
-            {/* <Route exact path={'/'}>
+            <Route exact path={'/'}>
                 <SplashScreen />
-            </Route> */}
+            </Route>
             <Route exact path={'/login'}>
                 <LoginPage />
             </Route>

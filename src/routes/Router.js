@@ -30,7 +30,7 @@ export default function Router() {
             <Route exact path={'/home'}>
                 <HomePage />
             </Route>
-            <Route exact path={'/restaurants/:id'}>
+            <Route exact path={'/restaurant/:id'}>
                 <RestaurantDetails />
             </Route>
             <Route exact path={'/cart'}>

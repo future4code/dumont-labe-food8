@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
-import { adress, axiosAuth } from '../../services/user'
+import { address, axiosAuth } from '../../services/user'
 import { TextField } from '@material-ui/core'
 import { FormContainer, Wrapper, ButtonStyled } from "../SignupPage/styles"
 import { Title } from "./styles"
@@ -11,25 +11,26 @@ import useProtectedPage from '../../hooks/useProtectedPage'
 export default function SignupPage() {
   useProtectedPage()
   const history = useHistory()
-  const {form, onChange} = useForm({street: "", number: "", complement:"", neighbourhood:"", city: "", state: ""})
-  
+  const { form, onChange } = useForm({ street: "", number: "", complement: "", neighbourhood: "", city: "", state: "" })
+
   const handleInput = (event) => {
-    const {value, name} = event.target
+    const { value, name } = event.target
     onChange(value, name)
   }
 
   const handleSubmission = (event) => {
     event.preventDefault()
-    adress(form, axiosAuth, history)
+    
+    address(form, axiosAuth, history)
   }
 
-   return (
+  return (
     <Wrapper>
-    
-    <Title>Meu endereço</Title>
-    
-    <FormContainer onSubmit={handleSubmission}>
-      <TextField
+
+      <Title>Meu endereço</Title>
+
+      <FormContainer onSubmit={handleSubmission}>
+        <TextField
           variant="outlined"
           size="small"
           label="Rua"
@@ -38,7 +39,7 @@ export default function SignupPage() {
           name="street"
           placeholder="Rua"
           onChange={handleInput}
-          style={{margin:'8px 0'}}
+          style={{ margin: '8px 0' }}
           required
         />
         <TextField
@@ -50,7 +51,7 @@ export default function SignupPage() {
           name="number"
           placeholder="Número"
           onChange={handleInput}
-          style={{margin:'8px 0'}}
+          style={{ margin: '8px 0' }}
           required
         />
         <TextField
@@ -62,9 +63,9 @@ export default function SignupPage() {
           name="complement"
           placeholder="Complemento"
           onChange={handleInput}
-          style={{margin:'8px 0'}}
+          style={{ margin: '8px 0' }}
         />
-         <TextField
+        <TextField
           variant="outlined"
           size="small"
           label="Bairro"
@@ -73,7 +74,7 @@ export default function SignupPage() {
           name="neighbourhood"
           placeholder="Bairro"
           onChange={handleInput}
-          style={{margin:'8px 0'}}
+          style={{ margin: '8px 0' }}
           required
         />
         <TextField
@@ -85,10 +86,10 @@ export default function SignupPage() {
           name="city"
           placeholder="Cidade"
           onChange={handleInput}
-          style={{margin:'8px 0'}}
+          style={{ margin: '8px 0' }}
           required
         />
-         <TextField
+        <TextField
           variant="outlined"
           size="small"
           label="Estado"
@@ -97,13 +98,13 @@ export default function SignupPage() {
           name="state"
           placeholder="Estado"
           onChange={handleInput}
-          style={{margin:'8px 0'}}
+          style={{ margin: '8px 0' }}
           required
         />
-        
-    <ButtonStyled>SALVAR</ButtonStyled>
-    </FormContainer>
-      
+
+        <ButtonStyled>SALVAR</ButtonStyled>
+      </FormContainer>
+
     </Wrapper>
   )
 }

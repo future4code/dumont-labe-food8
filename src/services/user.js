@@ -27,14 +27,24 @@ export const signup = (body, history) => {
 
 export const axiosAuth = {
   headers: {
-      auth: localStorage.getItem("token")
+    auth: localStorage.getItem("token")
   }
 }
 
-export const adress = (body, axiosAuth, history) => {
-  api.put('/address', body, axiosAuth).then(response => {
-    localStorage.removeItem("token")
+
+export const address = (body, axiosAuth, history) => {
+  console.log("body", body)
+  console.log("axiosAuth", axiosAuth)
+
+  api.put('/address', body, {
+    headers: {
+      auth: localStorage.getItem("token")
+    }
+  }
+  ).then(response => {
+    // localStorage.removeItem("token")
     localStorage.setItem("token", response.data.token)
+
     goToHome(history)
     console.log("foi")
   }).catch(error => {

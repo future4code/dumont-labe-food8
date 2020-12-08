@@ -11,10 +11,9 @@ import SplashScreen from '../pages/SplashScreen';
 import RestaurantDetails from '../pages/RestaurantDetails';
 import Profile from '../pages/Profile';
 
-export default function Router(props) {
+export default function Router() {
     return (
-        <Switch> 
-            {props.children}
+        <Switch>       
             <Route exact path={'/'}>
                 <SplashScreen />
             </Route>

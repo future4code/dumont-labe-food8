@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 
 export const BottomNav = styled.div`
-    width: 360px;
+    width: 100vw;
+    max-width: 420px;
     height: 49px;
     position: fixed;
     bottom: 0;
-    box-shadow: 6px 8px 16px #666;
+    border-top: 1px solid gray;
     margin-top: 64px;
 
 ` 

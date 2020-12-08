@@ -9,7 +9,6 @@ export const FilterField = styled.div`
   align-items: center;
   margin-top: 20px;
   overflow-x: hidden;
-  
    
 `
 export const FilterText = styled.div`

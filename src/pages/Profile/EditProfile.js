@@ -1,6 +1,6 @@
 import React from 'react';
 import { SaveButton, FormContainer, TextFieldStyled, Container } from "./stylesProfile"
-import Header from "../../constants/Header"
+import Header from "../../components/Header"
 
 export default function EditProfile() {
 

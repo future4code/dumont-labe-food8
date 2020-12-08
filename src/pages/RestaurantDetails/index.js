@@ -17,10 +17,17 @@ import {
   GrayTexts,
   ItemsContainer,
   TitleOfContainers,
-  TitleBorder
+  TitleBorder,
+  ModalContainer,
+  ModalOptionsForm,
+  ModalTitle,
+  Select,
+  Options,
+  Button
 } from './styles';
 
 export default function RestaurantDetails() {
+  const [openModal, setOpenModal] = useState(false)
   // const { id } = useParams();
   // const token = localStorage.getItem('token')
   // const [infosRestaurant, setInfosRestaurant] = useState({})
@@ -38,7 +45,14 @@ export default function RestaurantDetails() {
 
   // }, [id, token])
 
+  const hadleModal = () => {
+    setOpenModal(!openModal)
+  }
 
+  const addToCart = (event) => {
+    event.preventDefault()
+    setOpenModal(false)
+  }
 
   return (
     <RestaurantDetailsContainer>
@@ -61,9 +75,9 @@ export default function RestaurantDetails() {
         <TitleOfContainers>Principais</TitleOfContainers>
         <TitleBorder />
 
+        <FoodInformationCard openModal={hadleModal}/>
         <FoodInformationCard />
-        <FoodInformationCard />
- 
+
       </ItemsContainer>
 
       <ItemsContainer>
@@ -73,6 +87,27 @@ export default function RestaurantDetails() {
         <FoodInformationCard />
         <FoodInformationCard />
       </ItemsContainer>
+      <ModalContainer view={openModal}>
+        <ModalOptionsForm onSubmit={addToCart}>
+          <ModalTitle>Selecione a quantidade desejada</ModalTitle>
+          <Select
+            onChange={''}
+          >
+            <Options value={''} hidden selected>0</Options>
+            <Options value={1}>1</Options>
+            <Options value={2}>2</Options>
+            <Options value={3}>3</Options>
+            <Options value={4}>4</Options>
+            <Options value={5}>5</Options>
+            <Options value={6}>6</Options>
+            <Options value={7}>7</Options>
+            <Options value={8}>8</Options>
+            <Options value={9}>9</Options>
+            <Options value={10}>10</Options>
+          </Select>
+          <Button>Adicionar ao Carrinho</Button>
+        </ModalOptionsForm>
+      </ModalContainer>
     </RestaurantDetailsContainer>
   )
 }

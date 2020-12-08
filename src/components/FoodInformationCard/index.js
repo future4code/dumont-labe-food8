@@ -15,8 +15,13 @@ import {
   Button
 } from './styles';
 
-export default function FoodInformationCard() {
+export default function FoodInformationCard(props) {
   const quantitiy = 0
+
+  const handleModal = () => {
+    props.openModal()
+  }
+
   return (
     <CardContainer>
       <FoodImg src={'https://cdn.zeplin.io/5dcc566ddc1332bf7fb4f450/assets/95588246-1173-4513-89DA-A6107AFECF60.png'} />
@@ -34,7 +39,7 @@ export default function FoodInformationCard() {
           </IngredientsContainer>
         </NameIngredientsContainer>
 
-        <PriceButtomContainer>
+        <PriceButtomContainer onClick={handleModal}>
           <FoodPrice>R$23,00</FoodPrice>
           <Button quantity={quantitiy}>{quantitiy === 0 ? 'adicionar' : 'remover'}</Button>
         </PriceButtomContainer>

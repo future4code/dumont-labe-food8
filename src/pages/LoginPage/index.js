@@ -8,9 +8,13 @@ import InputAdornment from '@material-ui/core/InputAdornment'
 import OutlinedInput from '@material-ui/core/OutlinedInput'
 import Visibility from "@material-ui/icons/Visibility"
 import VisibilityOff from "@material-ui/icons/VisibilityOff"
-import { FormControl, TextField } from '@material-ui/core'
-import { Wrapper, FormContainer } from "./styles"
+import { Button, FormControl, TextField } from '@material-ui/core'
+import { Wrapper, FormContainer, Login } from "./styles"
 import useUnProtectedPage from '../../hooks/useUnProtectedPage'
+import { goToSignUp } from '../../routes/coordinator'
+import logo from "../../assets/img/small-logo.png"
+import { ImageLogo } from '../SignupPage/styles'
+import { ButtonStyled } from "../SignupPage/styles"
 
 export default function LoginPage() {
   useUnProtectedPage()
@@ -38,8 +42,8 @@ export default function LoginPage() {
 
   return (
     <Wrapper>
-      <img src={null}/>
-      <p>Entrar</p>
+      <ImageLogo src={logo} alt="logo-future-eats"/>
+      <Login>Entrar</Login>
       <FormContainer onSubmit={handleSubmission}>
         <TextField
           variant="outlined"
@@ -51,9 +55,10 @@ export default function LoginPage() {
           placeholder="E-mail"
           onChange={handleInput}
           required
+          style={{margin:'8px 0'}}
         />
-        <FormControl variant="outlined" required="true" >
-        <InputLabel htmlFor="outlined-adornment-password" margin="dense" >Senha</InputLabel>
+        <FormControl variant="outlined" required="true" style={{margin:'8px 0'}}>
+        <InputLabel htmlFor="outlined-adornment-password" margin="dense">Senha</InputLabel>
         <OutlinedInput
           id="outlined-adornment-password"
           margin="dense"
@@ -76,9 +81,10 @@ export default function LoginPage() {
           }
           />
         </FormControl>
-      <button>Entrar</button>
+      
       </FormContainer>
-      <button>Não possui cadastro? Clique aqui.</button>
+      <ButtonStyled>ENTRAR</ButtonStyled>
+      <Button onClick={() => {goToSignUp(history)}} style={{margin:'8px 0'}}>Não possui cadastro? Clique aqui.</Button>
     </Wrapper>
   )
 }

@@ -14,15 +14,16 @@ export const FilterField = styled.div`
 `
 export const FilterText = styled.div`
   width: 360px;
-  padding: 16px 0 16px 52px;
+  padding: 16px 0 16px 60px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   
 
   p{
-    font-size: 16px;
-    margin-left: 16px;    
+    font-size: 15px;
+    margin-left: 16px; 
+    font-weight: bold;   
   }
 
   p:hover{

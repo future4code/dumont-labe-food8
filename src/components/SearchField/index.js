@@ -6,7 +6,9 @@ const SearchField = () =>{
     return (
         <Search>
             <IconSearch src={SearchIcon} alt="Buscar" />
-            <SearchForm/>
+            <SearchForm
+                placeholder="Restaurante"
+            />
         </Search>
     )
 }

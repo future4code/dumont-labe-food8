@@ -24,4 +24,6 @@ export const SearchForm = styled.input`
   height: 50px;
   border: none;
   outline: 0;
+  font-size: 16px;
+  color: #94A6B9;
 `

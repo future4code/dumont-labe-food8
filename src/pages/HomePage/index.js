@@ -1,5 +1,5 @@
 import React from 'react';
-import { MainContainer, Filtre } from './styles';
+import { MainContainer, Filtre, CardContainer } from './styles';
 import SearchField from '../../components/SearchField'
 import RestaurantCard from '../../components/Restaurant_card ';
 import Filter from '../../components/Filter'
@@ -17,10 +17,12 @@ export default function HomePage() {
     <MainContainer>
         <SearchField/>
         <Filter/>
-        <RestaurantCard/>
-        <RestaurantCard/>
-        <RestaurantCard/>
-        <RestaurantCard/>
+        <CardContainer>
+          <RestaurantCard/>
+          <RestaurantCard/>
+          <RestaurantCard/>
+          <RestaurantCard/>
+        </CardContainer>
         <FooterNav/>
     </MainContainer>
   );

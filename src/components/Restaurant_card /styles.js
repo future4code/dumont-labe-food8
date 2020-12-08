@@ -12,7 +12,8 @@ export const CardInfo = styled.div`
   padding: 0 0 16px;
   border-radius: 8px;
   border: solid 1px #94A6B9;
-  margin-top: 20px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 
   h3{
     color: #5cb646;
@@ -30,6 +31,7 @@ export const Info = styled.div`
        margin-left: 8px;
        margin-right: 8px;
        margin-top: 8px;
+       
     }
 `
 

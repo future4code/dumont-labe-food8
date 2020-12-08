@@ -18,8 +18,9 @@ export const signup = (body, history) => {
   api.post('/signup', body).then(response => {
     localStorage.setItem("token", response.data.token)
     goToHome(history)
+    console.log("foi")
   }).catch(error => {
     alert("Please, check the filled fields!")
-    console.log(error.message)
+    console.log(error.message, "ruim")
   })
 }

@@ -1,10 +1,12 @@
-import React from 'react';
+import React from 'react'
+import useUnProtectedPage from '../../hooks/useUnProtectedPage'
+import SignUpForm from "./SignUpForm"
 
 export default function SignupPage() {
-  
-  return (
-    <div>
-      Signup Page
-    </div>
-  );
+  useUnProtectedPage()
+    return (
+      <div>
+        <SignUpForm/> 
+      </div>
+  )
 }

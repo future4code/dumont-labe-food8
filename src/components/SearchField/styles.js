@@ -9,7 +9,7 @@ export const Search = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 70px;
+  margin-top: 8px;
       
 `
 export const IconSearch = styled.img`

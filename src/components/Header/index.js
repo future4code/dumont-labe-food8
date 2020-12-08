@@ -1,15 +1,17 @@
 import styled from "styled-components"
 import React from 'react';
+import { Route } from 'react-router-dom';
 
   const Bar = styled.div`
   display: flex;
   justify-content:center;
+  margin: 0px;
   align-items: center;
   width: 100%;
   height: 64px;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  box-shadow: 0 0.5px 0 0 gray;
+  box-shadow: 0 0.5px 0 0 #b8b8b8;
   background-color: #ffffff;  
 `;
   const Title = styled.div`
@@ -36,7 +38,24 @@ import React from 'react';
 export default function Header() {
   return (    
         <Bar>
-            <Title>Header</Title>
+          <Route exact path={'/login'}>
+               <Title>Login</Title>
+          </Route>         
+          <Route exact path={'/signup'}>
+               <Title>signup</Title>
+          </Route>         
+          <Route exact path={'/home'}>
+               <Title>home</Title>
+          </Route>         
+          <Route exact path={'/restaurants/:id'}>
+               <Title>restaurants</Title>
+          </Route>         
+          <Route exact path={'/cart'}>
+               <Title>cart</Title>
+          </Route>         
+          <Route exact path={'/profile'}>
+               <Title>profile</Title>
+          </Route>         
         </Bar>   
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BoxAdress, BoxInline, NewAdress, Box, IconEdit, Subtotal, Date, Container, Name, Phone, Retangle, RegisteredAdress, Adress, OrderHistory, Line, RestaurantBox, ContainerOrder, Restaurant } from "./styles"
-import Header from "../../constants/Header"
+import Header from "../../components/Header"
 import iconEdit from "../../assets/icons/edit.svg"
 import EditProfile from "./EditProfile"
 
@@ -16,7 +16,7 @@ export default function Profile() {
     <React.Fragment>
       {page ? <EditProfile /> :
         <Container>
-          <Header></Header>
+          {/* <Header></Header> */}
           <BoxInline>
             <Box>
               <Name>Endereço de entrega</Name>

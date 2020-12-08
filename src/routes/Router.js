@@ -14,7 +14,7 @@ import AdressPage from '../pages/AdressPage';
 
 export default function Router() {
     return (
-        <Switch>
+        <Switch>       
             <Route exact path={'/'}>
                 <SplashScreen />
             </Route>

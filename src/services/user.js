@@ -25,6 +25,16 @@ export const signup = (body, history) => {
   })
 }
 
+export const updateProfile = (body) => {
+  api.put('/profile', body).then(response => {
+    localStorage.setItem("token", response.data.token)
+    alert("Cadastro atualizado")
+  }).catch(error => {
+    alert("ruim no updateProfile")
+    console.log(error.message, "ruim no updateProfile")
+  })
+}
+
 export const axiosAuth = {
   headers: {
     auth: localStorage.getItem("token")

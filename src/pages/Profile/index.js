@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { BoxAdress, BoxInline, NewAdress, Box, IconEdit, Subtotal, Date, Container, Name, Phone, Retangle, RegisteredAdress, Adress, OrderHistory, Line, RestaurantBox, ContainerOrder, Restaurant } from "./styles"
-import Header from "../../components/Header"
+import { BoxAdress, BoxInline, NewAdress, Box, IconEdit, Subtotal, Date, Container, Name, Phone, Retangle, RegisteredAdress, Email, OrderHistory, Line, RestaurantBox, ContainerOrder, Restaurant } from "./styles"
 import iconEdit from "../../assets/icons/edit.svg"
 import EditProfile from "./EditProfile"
+import { useHistory, useParams } from 'react-router-dom';
+import { goToAdressPage } from '../../routes/coordinator';
 
 
 export default function Profile() {
   const [page, setPage] = useState(false)
+  const history = useHistory()
 
   const changePage = () => {
     setPage(true)
@@ -16,12 +18,11 @@ export default function Profile() {
     <React.Fragment>
       {page ? <EditProfile /> :
         <Container>
-          {/* <Header></Header> */}
           <BoxInline>
             <Box>
-              <Name>Endereço de entrega</Name>
-              <Adress>Rua blablabla, 52</Adress>
-              <Phone>000000000</Phone>
+              <Name>Nome estático</Name>
+              <Email>E-mail estático</Email>
+              <Phone>telefone estático 00000</Phone>
             </Box>
             <IconEdit onClick={changePage} src={iconEdit} />
             {console.log("onClick", page)}
@@ -32,7 +33,7 @@ export default function Profile() {
               <RegisteredAdress>Endereço cadastrado</RegisteredAdress>
               <NewAdress>Rua blablabla, 52</NewAdress>
             </BoxAdress>
-            <IconEdit src={iconEdit} />
+            <IconEdit onClick={()=>goToAdressPage(history)} src={iconEdit} />
           </Retangle>
 
           <OrderHistory>Histórico de pedidos</OrderHistory>

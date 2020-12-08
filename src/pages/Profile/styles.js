@@ -5,15 +5,15 @@ export const Container = styled.div`
     min-height:100vh;
     max-width: 414px;
 `;
-// export const Box = styled.div`
-// display:flex;
-// flex-direction:column;
-// height: 80px;
-// width: 70%;
+export const BoxInline = styled.div`
+display:flex;
+`;
 
-// background-color:blue;
-
-// `;
+export const Box = styled.div`
+display:flex;
+flex-direction:column;
+width: 70%;
+`;
 
 export const Name = styled.div`  
   height: 18px;
@@ -28,13 +28,12 @@ export const Name = styled.div`
   color: #000000;
 `;
 export const IconEdit = styled.img`  
+  display:flex;
+  align-self: center;
   width: 24px;
   height: 24px;
-  margin: 16px 16px 2px 320px;
-  object-fit: contain;
-  background-color: red;
+  margin-left: 60px;
   `;
-
 
 export const Adress = styled.div`  
   width: 328px;
@@ -65,14 +64,21 @@ export const Phone = styled.div`
 `;
 
 export const Retangle = styled.div`  
+  display:flex;
   width: 100%;
   height: 76px;
   margin: 16px 0;
   padding: 16px;
   background-color: #eeeeee;
 `;
+export const BoxAdress = styled.div`  
+  display:flex;
+  flex-direction:column;
+  width: 70%;
+  background-color: #eeeeee;
+`;
 export const RegisteredAdress = styled.div`  
-   width: 328px;
+  width: 328px;
   height: 18px;
   margin: 0 0 8px;
   font-family: Roboto;
@@ -102,7 +108,7 @@ export const NewAdress = styled.div`
 export const OrderHistory = styled.div`  
   width: 328px;
   height: 18px;
-  margin: 30px 0 15px;
+  margin: 16px 16px 8px;
   font-family: Roboto;
   font-size: 16px;
   font-weight: normal;
@@ -120,14 +126,14 @@ export const ContainerOrder = styled.div`
   `;
 
 export const Line = styled.div`  
- width: 100%;
- margin: 0 0 7px;
+  width: 100%;
+  margin: 0 0 7px;
   height: 0.2px;
   border: solid 0.2px #000000;
   `;
 
 export const RestaurantBox = styled.div`  
-width: 328px;
+  width: 328px;
   height: 102px;
   margin: 7px 0 0;
   padding: 16px;

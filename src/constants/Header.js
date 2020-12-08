@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import React from 'react';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
   const Bar = styled.div`
   display: flex;

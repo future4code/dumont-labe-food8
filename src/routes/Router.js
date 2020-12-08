@@ -10,18 +10,22 @@ import ErrorPage from '../pages/ErrorPage';
 import SplashScreen from '../pages/SplashScreen';
 import RestaurantDetails from '../pages/RestaurantDetails';
 import Profile from '../pages/Profile';
+import AdressPage from '../pages/AdressPage';
 
 export default function Router() {
     return (
         <Switch>
-            {/* <Route exact path={'/'}>
+            <Route exact path={'/'}>
                 <SplashScreen />
-            </Route> */}
+            </Route>
             <Route exact path={'/login'}>
                 <LoginPage />
             </Route>
             <Route exact path={'/signup'}>
                 <SignupPage />
+            </Route>
+            <Route exact path={'/signup/adress'}>
+                <AdressPage/>
             </Route>
             <Route exact path={'/home'}>
                 <HomePage />

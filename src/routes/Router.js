@@ -10,6 +10,7 @@ import ErrorPage from '../pages/ErrorPage';
 import SplashScreen from '../pages/SplashScreen';
 import RestaurantDetails from '../pages/RestaurantDetails';
 import Profile from '../pages/Profile';
+import AdressPage from '../pages/AdressPage';
 
 export default function Router() {
     return (
@@ -22,6 +23,9 @@ export default function Router() {
             </Route>
             <Route exact path={'/signup'}>
                 <SignupPage />
+            </Route>
+            <Route exact path={'/signup/adress'}>
+                <AdressPage/>
             </Route>
             <Route exact path={'/home'}>
                 <HomePage />

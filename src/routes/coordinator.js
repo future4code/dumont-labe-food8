@@ -11,3 +11,6 @@ export const goToRestaurantsDetails = (history, id) => {
   history.push(`/restaurants/${id}`)
 }
 
+export const goToAdressPage = (history) => {
+  history.push('/signup/adress')
+}

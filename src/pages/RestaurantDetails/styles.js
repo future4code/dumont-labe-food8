@@ -1,12 +1,19 @@
 import styled from 'styled-components';
 
-export const RestaurantDetailsContainer = styled.main`
+export const PageRestaurantContainer = styled.main`
   width: 100vw;
   max-width: 420px;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   position: relative;
+`
+export const RestaurantDetailsContainer = styled.div`
+  width: 100vw;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 30px auto;
 `
 export const CardRestaurantDetails = styled.div`
   width: 90vw;
@@ -20,11 +27,11 @@ export const ImgContainer = styled.div`
   width: 100%;
   height: 120px;
   border-radius: 5px 5px 0 0;
+  object-fit: cover;
 `
 export const ImgRestaurantDetails = styled.img`
   width: 100%;
-  height: 120px;
-  object-fit: cover;
+  height: 120px;  
   border-radius: 5px 5px 0 0;
 `
 export const Restaurant = styled.h3`
@@ -82,9 +89,9 @@ export const ModalContainer = styled.div`
 
       display: flex;
       justify-content: center;
-      align-items: center;
 
       transition: 400ms;
+      z-index: 99;
   `
     )}
 `
@@ -100,6 +107,7 @@ export const ModalOptionsForm = styled.form`
   align-items: center;
   justify-content: space-evenly;
   text-align: center;
+  margin-top: 300px;
 `
 export const ModalTitle = styled.div`
   width: 296px;
@@ -140,4 +148,5 @@ export const Button = styled.button`
   border: none;
   outline: none;
   text-transform: uppercase;
+  cursor: pointer;
 `

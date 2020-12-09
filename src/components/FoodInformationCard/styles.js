@@ -46,10 +46,9 @@ export const Quantity = styled.span`
     )}
 
 `
-
 export const FoodName = styled.h3`
   height: 18px;
-  margin: 18px 49px 8px 16px;
+  margin: 15px 49px 8px 16px;
   font-size: 16px;
   letter-spacing: -0.39px;
   color: #5cb646;
@@ -61,6 +60,8 @@ export const IngredientsContainer = styled.div`
   font-size: 12px;
   letter-spacing: -0.29px;
   color: #b8b8b8;
+  display: flex;
+  align-items: center;
 `
 export const PriceButtomContainer = styled.div`
   width: 100%;
@@ -82,10 +83,12 @@ export const FoodPrice = styled.span`
 export const Button = styled.button`
   width: 90px;
   height: 90%;
-  margin: 0;
+  margin: 0 -2px 0 0;
   padding: 7px 25px 7px 20px;
   border-radius: 8px 0 8px 0;
   background-color: #FFFFFF;
+  cursor: pointer;
+  outline: none;
 
   border: solid 1px ${(props) => props.quantity === 0 ? '#5cb646' : '#E12A2A'} ;
   color: ${(props) => props.quantity === 0 ? '#5cb646' : '#E12A2A'};

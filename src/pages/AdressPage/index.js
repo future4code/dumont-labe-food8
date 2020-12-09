@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
-import { address, axiosAuth } from '../../services/user'
+import { address } from '../../services/user'
 import { TextField } from '@material-ui/core'
 import { FormContainer, Wrapper, ButtonStyled } from "../SignupPage/styles"
 import { Title } from "./styles"
@@ -21,7 +21,7 @@ export default function SignupPage() {
   const handleSubmission = (event) => {
     event.preventDefault()
     
-    address(form, axiosAuth, history)
+    address(form, history)
   }
 
   return (

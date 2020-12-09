@@ -1,4 +1,4 @@
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Router from '../routes/Router';
 
 /*Contexts*/
@@ -17,7 +17,9 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <GlobalState>
         <BrowserRouter>
-          <Header />          
+          <Route exact path={['/login', '/signup', '/signup/adress', '/home', '/cart', '/profile']}>
+            <Header />   
+          </Route>       
           <Router />
           <FooterNav/>
         </BrowserRouter>

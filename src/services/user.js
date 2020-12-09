@@ -18,12 +18,14 @@ export const signup = (body, history) => {
   api.post('/signup', body).then(response => {
     localStorage.setItem("token", response.data.token)
     goToAdressPage(history)
-    console.log("foi")
   }).catch(error => {
     alert("Please, check the filled fields!")
     console.log(error.message, "ruim")
   })
 }
+
+
+export const address = (body, history) => {
 
 export const updateProfile = (body) => {
   api.put('/profile', body).then(response => {
@@ -42,21 +44,20 @@ export const axiosAuth = {
 }
 
 
-export const address = (body, axiosAuth, history) => {
-  console.log("body", body)
-  console.log("axiosAuth", axiosAuth)
+// export const address = (body, axiosAuth, history) => {
+//   console.log("body", body)
+//   console.log("axiosAuth", axiosAuth)
 
+// >>>>>>> master
   api.put('/address', body, {
     headers: {
       auth: localStorage.getItem("token")
     }
   }
   ).then(response => {
-    // localStorage.removeItem("token")
     localStorage.setItem("token", response.data.token)
 
     goToHome(history)
-    console.log("foi")
   }).catch(error => {
     alert("Please, check the filled fields!")
     console.log(error.message, "ruim")

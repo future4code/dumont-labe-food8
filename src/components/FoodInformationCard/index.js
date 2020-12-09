@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 /*Tags styleds*/
 import {
@@ -16,32 +16,59 @@ import {
 } from './styles';
 
 export default function FoodInformationCard(props) {
-  const quantitiy = 0
+  const [viewQuantity, setViewQuantity] = useState(false)
+  const [quantityItem, setQuantityItem] = useState(0)
 
-  const handleModal = () => {
+  const handleModal = (id) => {
     props.openModal()
+
+    if(Number(props.quantity) > 0) {
+      addQuantityCard(id)
+    }
+  }
+
+  const addQuantityCard = (id) => {
+    if (id === props.productId) {
+      setViewQuantity(true)
+      setQuantityItem(Number(props.quantity))
+    }
+  }
+  const removeQuantityCard = async (id) => {
+    if (id === props.productId) {
+      setViewQuantity(false)
+      setQuantityItem(0)
+    }
   }
 
   return (
     <CardContainer>
-      <FoodImg src={'https://cdn.zeplin.io/5dcc566ddc1332bf7fb4f450/assets/95588246-1173-4513-89DA-A6107AFECF60.png'} />
+      <FoodImg src={props.photo} />
 
       <InfoFoodContainer>
 
         <NameIngredientsContainer>
           <NameQuantityContainer>
-            <FoodName>Bullguer</FoodName>
-            <Quantity quantity={quantitiy}>{quantitiy}</Quantity>
+            <FoodName>{props.name}</FoodName>
+            {viewQuantity &&
+              <Quantity quantity={quantityItem}>{quantityItem}</Quantity>
+            }
           </NameQuantityContainer>
 
           <IngredientsContainer>
-            Pão, carne, queijo, cebola roxa, tomate, alface e molho.
+            {props.description}
           </IngredientsContainer>
         </NameIngredientsContainer>
 
-        <PriceButtomContainer onClick={handleModal}>
-          <FoodPrice>R$23,00</FoodPrice>
-          <Button quantity={quantitiy}>{quantitiy === 0 ? 'adicionar' : 'remover'}</Button>
+        <PriceButtomContainer>
+          <FoodPrice>{new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(props.price)}</FoodPrice>
+          {quantityItem === 0 ? (
+            <Button onClick={() => handleModal(props.productId)} quantity={quantityItem}>adicionar</Button>
+          ) : (
+              <Button onClick={() => removeQuantityCard(props.productId)} quantity={quantityItem}>remover</Button>
+            )
+
+          }
+
         </PriceButtomContainer>
 
       </InfoFoodContainer>

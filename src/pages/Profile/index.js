@@ -25,7 +25,6 @@ export default function Profile() {
               <Phone>telefone estático 00000</Phone>
             </Box>
             <IconEdit onClick={changePage} src={iconEdit} />
-            {console.log("onClick", page)}
           </BoxInline>
 
           <Retangle>

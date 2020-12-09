@@ -1,18 +1,19 @@
 import React from 'react'
 import { CardContainer, CardImage, CardInfo, Info } from './styles'
-import Image from "../../assets/img/image.png"
-const RestaurantCard = () => {
+//import Image from "../../assets/img/image.png"
+
+const RestaurantCard = (props) => {
     return(
         <CardContainer>
             
             <CardInfo>
                 <CardImage>
-                    <img src={Image}/>
+                    {props.image}
                 </CardImage>
-                <h3>Vinil Butantã</h3>
+                <h3>{props.name}</h3>
                 <Info>
-                    <p>50-60 min</p>
-                    <p>Frete R$ 6,00</p>
+                    <p>{props.deliveryTime}</p>
+                    <p>Frete R$ {props.shipping},00</p>
                 </Info>
                 
             </CardInfo>

@@ -49,7 +49,7 @@ export const Email = styled.div`
   color: #000000;
 `;
 
-export const Phone = styled.div`  
+export const Cpf = styled.div`  
   width: 328px;
   height: 18px;
   margin: 8px 16px 16px;

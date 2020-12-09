@@ -1,16 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 
 // /*Serviços*/
-// import api from '../services/api';
+import api from '../services/api';
 
 /*Context*/
 import GlobalStateContext from "./GlobalStateContext";
 
 const GlobalState = (props) => {
   /*Aqui vai o state global */
-  
+  // const [profile, setProfile] = useState({});
+  // console.log("profile", profile)
 
   /*Aqui vai a requisição global */
+  //  const updateProfile = (body) => {
+  //   api.put('/profile', body)
+  //   .then((response) => {
+  //     localStorage.setItem("token", response.data.token)
+  //     setProfile(response.data.user)
+  //     alert("Cadastro atualizado")
+      
+  //   }).catch(error => {
+  //     console.log(error.message, "ruim no updateProfile")
+  //   })
+  // }
+  
 
   const states = {  };
   const setters = {  };

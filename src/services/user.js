@@ -24,7 +24,31 @@ export const signup = (body, history) => {
   })
 }
 
+
 export const address = (body, history) => {
+
+export const updateProfile = (body) => {
+  api.put('/profile', body).then(response => {
+    localStorage.setItem("token", response.data.token)
+    alert("Cadastro atualizado")
+  }).catch(error => {
+    alert("ruim no updateProfile")
+    console.log(error.message, "ruim no updateProfile")
+  })
+}
+
+export const axiosAuth = {
+  headers: {
+    auth: localStorage.getItem("token")
+  }
+}
+
+
+// export const address = (body, axiosAuth, history) => {
+//   console.log("body", body)
+//   console.log("axiosAuth", axiosAuth)
+
+// >>>>>>> master
   api.put('/address', body, {
     headers: {
       auth: localStorage.getItem("token")

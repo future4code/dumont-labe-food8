@@ -35,7 +35,7 @@ export const IconEdit = styled.img`
   margin-left: 60px;
   `;
 
-export const Adress = styled.div`  
+export const Email = styled.div`  
   width: 328px;
   height: 18px;
   margin: 2px 16px 8px;

@@ -35,7 +35,6 @@ export default function Profile() {
               <Cpf>{profile.cpf}</Cpf>
             </Box>
             <IconEdit onClick={changePage} src={iconEdit} />
-            {console.log("onClick", page)}
           </BoxInline>
 
           <Retangle>

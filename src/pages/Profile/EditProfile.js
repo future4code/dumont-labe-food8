@@ -16,7 +16,6 @@ export default function EditProfile() {
 
   const handleSubmission = (event) => {
     updateProfile(form)
-    console.log("updateProfile", updateProfile)
   }
 
   return (

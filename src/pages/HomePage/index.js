@@ -9,6 +9,7 @@ import axios from "axios"
 export default function HomePage() {
   const [restaurants, setRestaurants] = useState(undefined)
   const [filteredRestaurants, setFilteredRestaurants] = useState([])
+  const [categoryFilter, setCategoryFilter] = useState(undefined)
   useProtectedPage()
 
   useEffect (() => {
@@ -27,10 +28,11 @@ export default function HomePage() {
       .catch(err => {console.log(err.message)})
   }
 
+  
   return (
     <MainContainer>
-        <SearchField setSearch={setFilteredRestaurants} allRestaurants={restaurants} />
-        <Filter/>
+        <SearchField setSearch={setFilteredRestaurants} allRestaurants={restaurants} categoryFilter={setCategoryFilter}  />
+        <Filter allRestaurants={restaurants} setCategory={setFilteredRestaurants} categoryFilter={setCategoryFilter} />
         <CardContainer>
         { console.log(filteredRestaurants) }
         

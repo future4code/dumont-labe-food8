@@ -1,19 +1,16 @@
-import React from "react";
-
-// /*Serviços*/
-// import api from '../services/api';
+import React, {useState} from "react";
 
 /*Context*/
 import GlobalStateContext from "./GlobalStateContext";
 
 const GlobalState = (props) => {
-  /*Aqui vai o state global */
+  const [cart, setCart] = useState([])
   
 
   /*Aqui vai a requisição global */
 
-  const states = {  };
-  const setters = {  };
+  const states = { cart };
+  const setters = { setCart };
   const requests = {  };
 
   const data = { states, setters, requests };

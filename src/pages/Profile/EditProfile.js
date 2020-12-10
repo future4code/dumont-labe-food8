@@ -5,13 +5,14 @@ import { useHistory } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 import { updateProfile } from '../../services/user';
 
-export default function EditProfile() {
+export default function EditProfile(props) {
   useProtectedPage()
   const { form, onChange } = useForm({ name: "", email: "", cpf: "" })
   const history = useHistory()
 
-  const handleSubmission = (event) => {
-    updateProfile(form, history)       
+  const handleSubmission = (event) => {    
+    updateProfile(form, history)     
+    props.setPage(false)  
     event.preventDefault()
   }
 

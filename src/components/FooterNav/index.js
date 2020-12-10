@@ -22,7 +22,7 @@ const FooterNav = () => {
 
 
     return (
-        <Route exact path={["/home","/cart","/profile"]}>
+        <Route exact path={["/home", "/carrinho", "/perfil"]}>
             <BottomNav>
 
                 <BottomNavigation

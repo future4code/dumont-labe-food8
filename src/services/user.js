@@ -9,7 +9,7 @@ export const login = (body, history) => {
     localStorage.setItem("token", response.data.token)
     goToHome(history)
   }).catch(error => {
-    alert("Invalid email and/or password!")
+    alert("Email e/ou senha inválidos!")
     console.log(error.message)
   })
 }
@@ -19,10 +19,9 @@ export const signup = (body, history) => {
   .then(response => {
     localStorage.setItem("token", response.data.token)
     goToAdressPage(history)
-    console.log("foi")
   }).catch(error => {
-    alert("Please, check the filled fields!")
-    console.log(error.message, "ruim")
+    alert("Por favor, confirme seus dados!")
+    console.log(error.message)
   })
 }
 
@@ -37,8 +36,8 @@ export const updateProfile = (body, history) => {
     goToHome(history)
     
   }).catch(error => {
-    alert("ruim no updateProfile")
-    console.log(error.message, "ruim no updateProfile")
+    alert("Erro na atualização do cadastro")
+    console.log(error.message)
   })
 }
 
@@ -51,24 +50,13 @@ export const getProfile = (setProfile) => {
   })
   .then(response => {
     setProfile(response.data.user)
-    console.log("getProfile", response.data)
     
   }).catch(error => {
-    alert("ruim no getProfile")
-    console.log(error.message, "ruim no getProfile")
+    console.log(error.message)
   })
 }
 
-export const axiosAuth = {
-  headers: {
-    auth: localStorage.getItem("token")
-  }
-}
-
-
-export const address = (body, axiosAuth, history) => {
-  console.log("body", body)
-  console.log("axiosAuth", axiosAuth)
+export const address = (body, history) => {
 
   api.put('/address', body, {
     headers: {
@@ -77,11 +65,9 @@ export const address = (body, axiosAuth, history) => {
   }
   ).then(response => {
     localStorage.setItem("token", response.data.token)
-
     goToHome(history)
-    console.log("foi")
   }).catch(error => {
-    alert("Please, check the filled fields!")
-    console.log(error.message, "ruim")
+    alert("Confirme seus dados, por favor!")
+    console.log(error.message)
   })
 }

@@ -9,48 +9,51 @@ import axios from "axios"
 export default function HomePage() {
   const [restaurants, setRestaurants] = useState(undefined)
   const [filteredRestaurants, setFilteredRestaurants] = useState([])
+  const [categoryFilter, setCategoryFilter] = useState(undefined)
+
   useProtectedPage()
 
-  useEffect (() => {
+  useEffect(() => {
     getRestaurants()
-  }, [] )
+  }, [])
 
   const getRestaurants = () => {
-         axios.get('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/restaurants', {
-          headers: {
-           auth: localStorage.getItem("token")
-          }
-        }).then((res) => {
-        setRestaurants(res.data)
-        setFilteredRestaurants(res.data.restaurants)
-        console.log(res.data.restaurants)})
-      .catch(err => {console.log(err.message)})
+    axios.get('https://us-central1-missao-newton.cloudfunctions.net/futureEatsA/restaurants', {
+      headers: {
+        auth: localStorage.getItem("token")
+      }
+    }).then((res) => {
+      setRestaurants(res.data)
+      setFilteredRestaurants(res.data.restaurants)
+    })
+      .catch(err => { console.log(err.message) })
   }
+
 
   return (
     <MainContainer>
-        <SearchField setSearch={setFilteredRestaurants} allRestaurants={restaurants} />
-        <Filter/>
-        <CardContainer>
-        { console.log(filteredRestaurants) }
-        
-        
-        { filteredRestaurants.length === 0 ? <p> Restaurante não encontrado </p> :
+      <SearchField setSearch={setFilteredRestaurants} allRestaurants={restaurants} categoryFilter={setCategoryFilter} />
+      <Filter allRestaurants={restaurants} setCategory={setFilteredRestaurants} categoryFilter={setCategoryFilter} />
+      <CardContainer>
 
-          restaurants && (filteredRestaurants.map((item) => {  
-            
-                return (
-                    <RestaurantCard
-                    key={item.id}
-                    name={item.name}
-                    deliveryTime={item.deliveryTime}
-                    shipping={item.shipping}
-                    image= {<img src={item.logoUrl} alt="logo restaurante"/>} 
-                    />
-                )}) )
+
+        {filteredRestaurants.length === 0 ? <p> Restaurante não encontrado </p> :
+
+          restaurants && (filteredRestaurants.map((item) => {
+
+            return (
+              <RestaurantCard
+                key={item.id}
+                name={item.name}
+                deliveryTime={item.deliveryTime}
+                shipping={item.shipping}
+                image={<img src={item.logoUrl} alt="logo restaurante" />}
+              />
+            )
+          }))
         }
-        
-       </CardContainer>
+
+      </CardContainer>
     </MainContainer>
   )
 }

@@ -1,10 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import { SaveButton, FormContainer, TextFieldStyled, Container } from "./stylesProfile"
-// import { updateProfile } from '../../services/user'
 import useProtectedPage from '../../hooks/useProtectedPage';
 import { useHistory } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
-import GlobalStateContext from '../../global/GlobalStateContext';
 import { updateProfile } from '../../services/user';
 
 export default function EditProfile() {
@@ -12,16 +10,10 @@ export default function EditProfile() {
   const { form, onChange } = useForm({ name: "", email: "", cpf: "" })
   const history = useHistory()
 
-  const handleInput = (event) => {
-    const { value, name } = event.target
-    onChange(value, name) 
-  }
-
   const handleSubmission = (event) => {
     updateProfile(form, history)       
     event.preventDefault()
   }
-
 
   return (
     <Container>
@@ -33,7 +25,7 @@ export default function EditProfile() {
           type="text"
           variant="outlined"
           name="name"
-          onChange={handleInput}
+          onChange={onChange}
           style={{ margin: '8px 0' }}
           required>
 
@@ -45,17 +37,18 @@ export default function EditProfile() {
           type="email"
           variant="outlined"
           name="email"
-          onChange={handleInput}
+          onChange={onChange}
           style={{ margin: '8px 0' }}
           required>
         </TextFieldStyled>
 
         <TextFieldStyled
           id="outlined-basic"
-          label="CPF Somente números"
+          label="CPF"
+          placeholder= "Somente números"
           variant="outlined"
           name="cpf"
-          onChange={handleInput}
+          onChange={onChange}
           style={{ margin: '8px 0' }}
           pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
           required

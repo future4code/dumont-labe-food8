@@ -15,7 +15,8 @@ export const login = (body, history) => {
 }
 
 export const signup = (body, history) => {
-  api.post('/signup', body).then(response => {
+  api.post('/signup', body)
+  .then(response => {
     localStorage.setItem("token", response.data.token)
     goToAdressPage(history)
     console.log("foi")
@@ -25,14 +26,36 @@ export const signup = (body, history) => {
   })
 }
 
-export const updateProfile = (body) => {
-  api.put('/profile', body).then(response => {
-    localStorage.setItem("token", response.data.token)
+export const updateProfile = (body, history) => {
+  api.put('/profile', body, {
+    headers: {
+      auth: localStorage.getItem("token")
+    }
+  }).then(response => {
+    localStorage.setItem("token", response.data.token)  
     alert("Cadastro atualizado")
-    // gotopage
+    goToHome(history)
+    
   }).catch(error => {
     alert("ruim no updateProfile")
     console.log(error.message, "ruim no updateProfile")
+  })
+}
+
+export const getProfile = (setProfile) => {
+  console.log("setProfile", setProfile)
+  api.get('/profile', {
+    headers: {
+      auth: localStorage.getItem("token")
+    }
+  })
+  .then(response => {
+    setProfile(response.data.user)
+    console.log("getProfile", response.data)
+    
+  }).catch(error => {
+    alert("ruim no getProfile")
+    console.log(error.message, "ruim no getProfile")
   })
 }
 

@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
+/*Serviços*/
 import api from '../../services/api';
+
+/*Contexts*/
+import GlobalStateContext from "../../global/GlobalStateContext";
 
 /*Hooks Customizados*/
 import useProtectedPage from '../../hooks/useProtectedPage';
@@ -33,10 +37,11 @@ import {
 
 export default function RestaurantDetails() {
   useProtectedPage()
-
+  const { states, setters } = useContext(GlobalStateContext)
   const [infosRestaurant, setInfosRestaurant] = useState({})
   const [openModal, setOpenModal] = useState(false)
   const [quantity, setQuantity] = useState(0)
+  const [cardId, setCardId] = useState('')
 
   const { id } = useParams();
   const token = localStorage.getItem('token')
@@ -54,14 +59,32 @@ export default function RestaurantDetails() {
 
   }, [id, token])
 
-  const hadleModal = () => {
+  const handleModal = (id) => {
+    setCardId(id)
     setOpenModal(!openModal)
     window.scrollTo(0,0);
   }
 
   const addToCart = (event) => {
     event.preventDefault()
-    hadleModal()
+    handleModal()
+
+    const product = infosRestaurant.products.filter(product => {
+      return product.id === cardId
+    })
+
+    const completeProduct = {
+      ...product[0],
+      quantity: quantity
+    }
+
+    const newItem = [...states.cart, completeProduct]
+    setters.setCart(newItem);
+    setQuantity(0)
+  }
+  const removeToCart = (id) => {
+    const index = states.cart.findIndex((item) => item.id === id);
+    states.cart.splice(index, 1)
   }
 
   const onChangeQuantity = (event) => {
@@ -100,7 +123,8 @@ export default function RestaurantDetails() {
                     return <FoodInformationCard
                       key={product.id}
                       productId={product.id}
-                      openModal={hadleModal}
+                      openModal={handleModal}
+                      remove={removeToCart}
                       name={product.name}
                       description={product.description}
                       photo={product.photoUrl}
@@ -118,7 +142,8 @@ export default function RestaurantDetails() {
                     return <FoodInformationCard
                       key={product.id}
                       productId={product.id}
-                      openModal={hadleModal}
+                      openModal={handleModal}
+                      remove={removeToCart}
                       name={product.name}
                       description={product.description}
                       photo={product.photoUrl}
@@ -135,7 +160,7 @@ export default function RestaurantDetails() {
           <ModalOptionsForm onSubmit={addToCart}>
             <ModalTitle>Selecione a quantidade desejada</ModalTitle>
             <Select onChange={onChangeQuantity} value={quantity}>
-              <Options value={''} hidden>0</Options>
+              <Options value={0} hidden>0</Options>
               <Options value={1}>1</Options>
               <Options value={2}>2</Options>
               <Options value={3}>3</Options>

@@ -36,7 +36,6 @@ export default function SignupPage() {
   }
 
   const handleSubmission = (event) => {
-    //event.preventDefault()
     signup(form, history)
   }
 
@@ -48,12 +47,8 @@ export default function SignupPage() {
     event.preventDefault()
     if(passwordOne === passwordTwo) {
       handleSubmission()
-      console.log("bom")
-      //event.preventDefault()
     } else {
       alert("Please, check your password")
-      //event.preventDefault()
-      console.log("ruim")
     }
   }
   

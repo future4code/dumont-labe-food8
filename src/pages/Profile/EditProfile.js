@@ -1,23 +1,27 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { SaveButton, FormContainer, TextFieldStyled, Container } from "./stylesProfile"
-import { updateProfile } from '../../services/user'
+// import { updateProfile } from '../../services/user'
 import useProtectedPage from '../../hooks/useProtectedPage';
 import { useHistory } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
+import GlobalStateContext from '../../global/GlobalStateContext';
+import { updateProfile } from '../../services/user';
 
 export default function EditProfile() {
   useProtectedPage()
   const { form, onChange } = useForm({ name: "", email: "", cpf: "" })
+  const history = useHistory()
 
   const handleInput = (event) => {
     const { value, name } = event.target
-    onChange(value, name)
+    onChange(value, name) 
   }
 
   const handleSubmission = (event) => {
-    updateProfile(form)
-    console.log("updateProfile", updateProfile)
+    updateProfile(form, history)       
+    event.preventDefault()
   }
+
 
   return (
     <Container>

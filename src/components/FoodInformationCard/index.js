@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 /*Tags styleds*/
 import {
   CardContainer,
@@ -19,25 +20,16 @@ export default function FoodInformationCard(props) {
   const [viewQuantity, setViewQuantity] = useState(false)
   const [quantityItem, setQuantityItem] = useState(0)
 
+
   const handleModal = (id) => {
-    props.openModal()
-
-    if(Number(props.quantity) > 0) {
-      addQuantityCard(id)
-    }
+    props.openModal(id)
+    setQuantityItem(1)
   }
 
-  const addQuantityCard = (id) => {
-    if (id === props.productId) {
-      setViewQuantity(true)
-      setQuantityItem(Number(props.quantity))
-    }
-  }
-  const removeQuantityCard = async (id) => {
-    if (id === props.productId) {
+  const removeQuantityCard = (id) => {
       setViewQuantity(false)
       setQuantityItem(0)
-    }
+      props.remove(id)
   }
 
   return (
@@ -49,9 +41,9 @@ export default function FoodInformationCard(props) {
         <NameIngredientsContainer>
           <NameQuantityContainer>
             <FoodName>{props.name}</FoodName>
-            {viewQuantity &&
+            {/* {viewQuantity &&
               <Quantity quantity={quantityItem}>{quantityItem}</Quantity>
-            }
+            } */}
           </NameQuantityContainer>
 
           <IngredientsContainer>

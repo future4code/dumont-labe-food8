@@ -10,6 +10,7 @@ export default function HomePage() {
   const [restaurants, setRestaurants] = useState(undefined)
   const [filteredRestaurants, setFilteredRestaurants] = useState([])
   const [categoryFilter, setCategoryFilter] = useState(undefined)
+  
   useProtectedPage()
 
   useEffect (() => {
@@ -25,17 +26,16 @@ export default function HomePage() {
         setRestaurants(res.data)
         setFilteredRestaurants(res.data.restaurants)
         console.log(res.data.restaurants)})
-      .catch(err => {console.log(err.message)})
+        .catch(err => {console.log(err.message)})
   }
 
   
   return (
     <MainContainer>
-        <SearchField setSearch={setFilteredRestaurants} allRestaurants={restaurants} categoryFilter={setCategoryFilter}  />
+        <SearchField setSearch={setFilteredRestaurants} allRestaurants={restaurants} categoryFilter={setCategoryFilter} />
         <Filter allRestaurants={restaurants} setCategory={setFilteredRestaurants} categoryFilter={setCategoryFilter} />
         <CardContainer>
-        { console.log(filteredRestaurants) }
-        
+                
         
         { filteredRestaurants.length === 0 ? <p> Restaurante não encontrado </p> :
 

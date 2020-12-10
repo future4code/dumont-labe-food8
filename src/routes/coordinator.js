@@ -18,3 +18,11 @@ export const goToRestaurantsDetails = (history, id) => {
 export const goToAdressPage = (history) => {
   history.push('/cadastro/endereco')
 }
+
+export const goToCart = (history) => {
+  history.push('/carrinho')
+}
+
+export const goBack = (history) => {
+  history.goBack()
+}

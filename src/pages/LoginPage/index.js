@@ -38,6 +38,7 @@ export default function LoginPage() {
   const handleSubmission = (event) => {
     event.preventDefault()
     login(form, history)
+    console.log("handleSubmission")
   }
 
   return (
@@ -81,9 +82,9 @@ export default function LoginPage() {
           }
           />
         </FormControl>
-      
-      </FormContainer>
       <ButtonStyled>ENTRAR</ButtonStyled>
+      </FormContainer>
+      
       <Button onClick={() => {goToSignUp(history)}} style={{margin:'8px 0'}}>Não possui cadastro? Clique aqui.</Button>
     </Wrapper>
   )

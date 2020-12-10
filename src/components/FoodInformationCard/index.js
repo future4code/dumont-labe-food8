@@ -19,25 +19,22 @@ export default function FoodInformationCard(props) {
   const [viewQuantity, setViewQuantity] = useState(false)
   const [quantityItem, setQuantityItem] = useState(0)
 
-  const handleModal = (id) => {
-    props.openModal()
 
-    if(Number(props.quantity) > 0) {
-      addQuantityCard(id)
-    }
+  const handleModal = (id) => {
+    props.openModal(id)
+    addQuantityItem()
   }
 
-  const addQuantityCard = (id) => {
-    if (id === props.productId) {
+  const addQuantityItem = () => {
       setViewQuantity(true)
       setQuantityItem(Number(props.quantity))
-    }
+      
   }
-  const removeQuantityCard = async (id) => {
-    if (id === props.productId) {
+
+  const removeQuantityCard = (id) => {
       setViewQuantity(false)
       setQuantityItem(0)
-    }
+      props.remove(id)
   }
 
   return (

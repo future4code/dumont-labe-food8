@@ -17,18 +17,11 @@ import {
 } from './styles';
 
 export default function FoodInformationCard(props) {
-  const [viewQuantity, setViewQuantity] = useState(false)
-  const [quantityItem, setQuantityItem] = useState(0)
-
-
   const handleModal = (id) => {
     props.openModal(id)
-    setQuantityItem(1)
   }
 
   const removeQuantityCard = (id) => {
-    setViewQuantity(false)
-    setQuantityItem(0)
     props.remove(id)
   }
 
@@ -41,9 +34,7 @@ export default function FoodInformationCard(props) {
         <NameIngredientsContainer>
           <NameQuantityContainer>
             <FoodName>{props.name}</FoodName>
-            {/* {viewQuantity &&
-              <Quantity quantity={quantityItem}>{quantityItem}</Quantity>
-            } */}
+            <Quantity quantity={props.quantity}>{props.quantity}</Quantity>
           </NameQuantityContainer>
 
           <IngredientsContainer>
@@ -53,12 +44,11 @@ export default function FoodInformationCard(props) {
 
         <PriceButtomContainer>
           <FoodPrice>{new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(props.price)}</FoodPrice>
-          {quantityItem === 0 ? (
-            <Button onClick={() => handleModal(props.productId)} quantity={quantityItem}>adicionar</Button>
+          {props.quantity === 0 ? (
+            <Button onClick={() => handleModal(props.productId)} quantity={props.quantity}>adicionar</Button>
           ) : (
-              <Button onClick={() => removeQuantityCard(props.productId)} quantity={quantityItem}>remover</Button>
+              <Button onClick={() => removeQuantityCard(props.productId)} quantity={props.quantity}>remover</Button>
             )
-
           }
 
         </PriceButtomContainer>

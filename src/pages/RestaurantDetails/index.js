@@ -13,6 +13,7 @@ import useProtectedPage from '../../hooks/useProtectedPage';
 /*Components*/
 import FoodInformationCard from '../../components/FoodInformationCard';
 import Header from '../../components/Header';
+import Loading from '../../components/Loading';
 
 /*Tags styleds*/
 import {
@@ -38,7 +39,6 @@ import {
 export default function RestaurantDetails() {
   useProtectedPage()
   const { states, setters } = useContext(GlobalStateContext)
-  const [infosRestaurant, setInfosRestaurant] = useState({})
   const [openModal, setOpenModal] = useState(false)
   const [quantity, setQuantity] = useState(0)
   const [cardId, setCardId] = useState('')
@@ -52,40 +52,72 @@ export default function RestaurantDetails() {
         auth: token
       }
     }).then((res) => {
-      setInfosRestaurant(res.data.restaurant)
+      addQuantityProperty(res.data.restaurant)
     }).catch((error) => {
       console.log(error.message)
     })
 
-  }, [id, token])
+  }, [addQuantityProperty, id, token])
+
+  const addQuantityProperty = (restaurantInfo) => {
+    let newProducts
+    let newInfosRestaurant
+
+    if (Object.entries(states.cart).length === 0) {
+      newProducts = restaurantInfo.products.map((product) => {
+        return { ...product, quantity: 0 }
+      })
+
+      newInfosRestaurant = { ...restaurantInfo, products: newProducts }
+
+      setters.setCart(newInfosRestaurant)
+    }
+
+  }
 
   const handleModal = (id) => {
     setCardId(id)
     setOpenModal(!openModal)
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   }
 
   const addToCart = (event) => {
     event.preventDefault()
     handleModal()
 
-    const product = infosRestaurant.products.filter(product => {
-      return product.id === cardId
+    const newProducts = states.cart.products.map(product => {
+      if (product.id === cardId) {
+        const completeProduct = {
+          ...product,
+          quantity: quantity
+        }
+        return completeProduct
+      } else {
+        return product
+      }
     })
 
-    const completeProduct = {
-      ...product[0],
-      quantity: quantity
-    }
+    const newCart = { ...states.cart, products: newProducts }
 
-    const newItem = [...states.cart, completeProduct]
-    setters.setCart(newItem);
+    setters.setCart(newCart);
     setQuantity(0)
-    localStorage.setItem("cart", JSON.stringify(newItem))
   }
+
   const removeToCart = (id) => {
-    const index = states.cart.findIndex((item) => item.id === id);
-    states.cart.splice(index, 1)
+    const newProducts = states.cart.products.map(product => {
+      if (product.id === id) {
+        const completeProduct = {
+          ...product,
+          quantity: 0
+        }
+        return completeProduct
+      } else {
+        return product
+      }
+    })
+
+    const newCart = { ...states.cart, products: newProducts }
+    setters.setCart(newCart);
   }
 
   const onChangeQuantity = (event) => {
@@ -96,30 +128,30 @@ export default function RestaurantDetails() {
     <PageRestaurantContainer>
       <Header />
       <RestaurantDetailsContainer>
-        {Object.entries(infosRestaurant).length === 0 ? (
-          <h1>Carregando...</h1>
+        {Object.entries(states.cart).length === 0 ? (
+          <Loading />
         ) : (
             <div>
               <CardRestaurantDetails>
                 <ImgContainer>
-                  <ImgRestaurantDetails src={infosRestaurant.logoUrl} />
+                  <ImgRestaurantDetails src={states.cart.logoUrl} />
                 </ImgContainer>
-                <Restaurant>{infosRestaurant.name}</Restaurant>
-                <GrayTexts>{infosRestaurant.category}</GrayTexts>
+                <Restaurant>{states.cart.name}</Restaurant>
+                <GrayTexts>{states.cart.category}</GrayTexts>
 
                 <DeliveryTimeAndFreightContainer>
-                  <GrayTexts>{`${infosRestaurant.deliveryTime - 10} - ${infosRestaurant.deliveryTime}`} min</GrayTexts>
-                  <GrayTexts>Entrega {new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(infosRestaurant.shipping)}</GrayTexts>
+                  <GrayTexts>{`${states.cart.deliveryTime - 10} - ${states.cart.deliveryTime}`} min</GrayTexts>
+                  <GrayTexts>Entrega {new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(states.cart.shipping)}</GrayTexts>
                 </DeliveryTimeAndFreightContainer>
 
-                <GrayTexts>{infosRestaurant.address}</GrayTexts>
+                <GrayTexts>{states.cart.address}</GrayTexts>
               </CardRestaurantDetails>
 
               <ItemsContainer>
                 <TitleOfContainers>Principais</TitleOfContainers>
                 <TitleBorder />
 
-                {infosRestaurant.products.map(product => {
+                {states.cart.products.map(product => {
                   if (product.category !== 'Acompanhamento')
                     return <FoodInformationCard
                       key={product.id}
@@ -130,7 +162,7 @@ export default function RestaurantDetails() {
                       description={product.description}
                       photo={product.photoUrl}
                       price={product.price}
-                      quantity={quantity}
+                      quantity={product.quantity}
                     />
                 })}
               </ItemsContainer>
@@ -138,7 +170,7 @@ export default function RestaurantDetails() {
               <ItemsContainer>
                 <TitleOfContainers>Acompanhamentos</TitleOfContainers>
                 <TitleBorder />
-                {infosRestaurant.products.map(product => {
+                {states.cart.products.map(product => {
                   if (product.category === 'Acompanhamento')
                     return <FoodInformationCard
                       key={product.id}
@@ -149,7 +181,7 @@ export default function RestaurantDetails() {
                       description={product.description}
                       photo={product.photoUrl}
                       price={product.price}
-                      quantity={quantity}
+                      quantity={product.quantity}
                     />
                 })}
               </ItemsContainer>
@@ -158,24 +190,24 @@ export default function RestaurantDetails() {
         }
       </RestaurantDetailsContainer>
       <ModalContainer view={openModal}>
-          <ModalOptionsForm onSubmit={addToCart}>
-            <ModalTitle>Selecione a quantidade desejada</ModalTitle>
-            <Select onChange={onChangeQuantity} value={quantity}>
-              <Options value={0} hidden>0</Options>
-              <Options value={1}>1</Options>
-              <Options value={2}>2</Options>
-              <Options value={3}>3</Options>
-              <Options value={4}>4</Options>
-              <Options value={5}>5</Options>
-              <Options value={6}>6</Options>
-              <Options value={7}>7</Options>
-              <Options value={8}>8</Options>
-              <Options value={9}>9</Options>
-              <Options value={10}>10</Options>
-            </Select>
-            <Button>Adicionar ao Carrinho</Button>
-          </ModalOptionsForm>
-        </ModalContainer>
+        <ModalOptionsForm onSubmit={addToCart}>
+          <ModalTitle>Selecione a quantidade desejada</ModalTitle>
+          <Select onChange={onChangeQuantity} value={quantity}>
+            <Options value={0} hidden>0</Options>
+            <Options value={1}>1</Options>
+            <Options value={2}>2</Options>
+            <Options value={3}>3</Options>
+            <Options value={4}>4</Options>
+            <Options value={5}>5</Options>
+            <Options value={6}>6</Options>
+            <Options value={7}>7</Options>
+            <Options value={8}>8</Options>
+            <Options value={9}>9</Options>
+            <Options value={10}>10</Options>
+          </Select>
+          <Button>Adicionar ao Carrinho</Button>
+        </ModalOptionsForm>
+      </ModalContainer>
     </PageRestaurantContainer>
   )
 }

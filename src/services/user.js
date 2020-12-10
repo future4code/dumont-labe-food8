@@ -2,7 +2,7 @@
 import api from './api';
 
 /*Coordenador de rotas */
-import { goToProfile, goToHome, goToAdressPage } from "../routes/coordinator";
+import { goToHome, goToAdressPage } from "../routes/coordinator";
 
 export const login = (body, history) => {
   api.post('/login', body).then(response => {
@@ -38,6 +38,19 @@ export const updateProfile = (body, history) => {
 
   }).catch(error => {
     alert("Erro na atualização do cadastro")
+    console.log(error.message)
+  })
+}
+
+export const getOrderHistory = () => {
+  api.get('/orders/history', {
+    headers: {
+      auth: localStorage.getItem("token")
+    }
+  }).then(response => {
+    console.log(response.data)
+
+  }).catch(error => {
     console.log(error.message)
   })
 }

@@ -4,13 +4,14 @@ import iconEdit from "../../assets/icons/edit.svg"
 import EditProfile from "./EditProfile"
 import { useHistory } from 'react-router-dom';
 import { goToAdressPage } from '../../routes/coordinator';
-import { getProfile } from '../../services/user';
+import { getAddress, getProfile } from '../../services/user';
 import useProtectedPage from '../../hooks/useProtectedPage';
 
 
 export default function Profile() {
   const [page, setPage] = useState(false)
   const [profile, setProfile] = useState({})
+  const [userAddress, setUserAddress] = useState(undefined)
 
   const history = useHistory()
   useProtectedPage()
@@ -21,6 +22,7 @@ export default function Profile() {
 
   useEffect(() => {
     getProfile(setProfile)
+    getAddress(setUserAddress)
   }, [])
 
   return (
@@ -39,7 +41,12 @@ export default function Profile() {
           <Retangle>
             <BoxAdress>
               <RegisteredAdress>Endereço cadastrado</RegisteredAdress>
-              <NewAdress>Rua blablabla, 52</NewAdress>
+              <NewAdress>
+                {userAddress ?
+                  <p>{`${userAddress.street}, ${userAddress.number} - ${userAddress.neighbourhood}`}</p>
+                  : <p>Buscando seu endereço..</p>
+                }
+              </NewAdress>
             </BoxAdress>
             <IconEdit onClick={() => goToAdressPage(history)} src={iconEdit} />
           </Retangle>

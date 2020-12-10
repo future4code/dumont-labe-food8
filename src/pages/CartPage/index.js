@@ -45,7 +45,7 @@ export default function CartPage() {
         }
       </AddressContainer>
 
-      {states.cart.length ? states.cart.map((product) => {
+      {states.cart ? states.cart.map((product) => {
         return (
           <CartFoodInfoCard
             quantity={product.quantity}

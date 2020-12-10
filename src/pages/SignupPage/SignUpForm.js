@@ -9,20 +9,23 @@ import OutlinedInput from '@material-ui/core/OutlinedInput'
 import Visibility from "@material-ui/icons/Visibility"
 import VisibilityOff from "@material-ui/icons/VisibilityOff"
 import { FormControl, TextField } from '@material-ui/core'
+import CpfCnpj from "@react-br-forms/cpf-cnpj-mask"
 import logo from "../../assets/img/small-logo.png"
 import { ImageLogo, Register, FormContainer, Wrapper, ButtonStyled } from "./styles"
 
 
 export default function SignupPage() {
   const history = useHistory()
-  const {form, onChange} = useForm({name: "", email: "", cpf:"", password:"", confirmPassword: ""})
+  const {form, onChange} = useForm({name: "", email: "", cpf: "", password:"", confirmPassword: ""})
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  //const [cpfCnpj, setCpfCnpj] = useState("")
+  //const [mask, setMask] = useState("");
 
   const handleInput = (event) => {
     const {value, name} = event.target
     onChange(value, name)
-  }
+  } 
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword)
@@ -83,19 +86,31 @@ export default function SignupPage() {
           required
           style={{margin:'8px 0'}}
         />
-        <TextField
+        
+         {/* <CpfCnpj
+          value={cpfCnpj}
+          onChange={(ev, type) => {
+           setCpfCnpj(ev.target.value);
+           setMask(type === "CPF");
+         }}> */}
+           {() => <TextField
           variant="outlined"
           size="small"
           label="CPF"
           value={form.cpf}
-          type="text"
+          type="tel"
           name="cpf"
           placeholder="Somente números"
           pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
           onChange={handleInput}
           required
           style={{margin:'8px 0'}}
-        />
+          />}
+                 
+            {/* </CpfCnpj>  */}
+        
+        
+        
         
         <FormControl variant="outlined" required="true" style={{margin:'8px 0'}}>
         <InputLabel htmlFor="outlined-adornment-password" margin="dense">Senha</InputLabel>

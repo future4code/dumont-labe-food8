@@ -81,6 +81,7 @@ export default function RestaurantDetails() {
     const newItem = [...states.cart, completeProduct]
     setters.setCart(newItem);
     setQuantity(0)
+    localStorage.setItem("cart", JSON.stringify(newItem))
   }
   const removeToCart = (id) => {
     const index = states.cart.findIndex((item) => item.id === id);

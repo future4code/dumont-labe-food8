@@ -1,19 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SaveButton, FormContainer, TextFieldStyled, Container } from "./stylesProfile"
 import useProtectedPage from '../../hooks/useProtectedPage';
-import { useHistory } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 import { updateProfile } from '../../services/user';
 
 export default function EditProfile(props) {
   useProtectedPage()
   const { form, onChange } = useForm({ name: "", email: "", cpf: "" })
-  const history = useHistory()
 
-  const handleSubmission = (event) => {    
-    updateProfile(form, history)     
+  const handleSubmission = (event) => {  
+    event.preventDefault()  
+    updateProfile(form)     
     props.setPage(false)  
-    event.preventDefault()
   }
 
   return (

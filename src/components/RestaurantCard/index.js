@@ -1,12 +1,17 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
+import { goToRestaurantsDetails } from '../../routes/coordinator'
 import { CardContainer, CardImage, CardInfo, Info } from './styles'
 //import Image from "../../assets/img/image.png"
 
 const RestaurantCard = (props) => {
+    const history = useHistory()
+
     return (
-        <CardContainer>
+        <CardContainer onClick={() => goToRestaurantsDetails(history, props.id)}>
 
             <CardInfo>
+
                 <CardImage>
                     {props.image}
                 </CardImage>

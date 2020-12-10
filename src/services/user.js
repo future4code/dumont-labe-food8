@@ -2,7 +2,7 @@
 import api from './api';
 
 /*Coordenador de rotas */
-import { goToProfile, goToHome, goToAdressPage } from "../routes/coordinator";
+import { goToHome, goToAdressPage } from "../routes/coordinator";
 
 export const login = (body, history) => {
   api.post('/login', body).then(response => {
@@ -25,19 +25,28 @@ export const signup = (body, history) => {
     })
 }
 
-export const updateProfile = (body, history) => {
+export const updateProfile = (body) => {
   api.put('/profile', body, {
     headers: {
       auth: localStorage.getItem("token")
     }
-  }).then(response => {
-
-    localStorage.setItem("token", response.data.token)
-    alert("Cadastro atualizado")
-    goToHome(history)
+  }).then(() => {
 
   }).catch(error => {
     alert("Erro na atualização do cadastro")
+    console.log(error.message)
+  })
+}
+
+export const getOrderHistory = (setOrders) => {
+  api.get('/orders/history', {
+    headers: {
+      auth: localStorage.getItem("token")
+    }
+  }).then(response => {
+    setOrders(response.data.orders)
+
+  }).catch(error => {
     console.log(error.message)
   })
 }

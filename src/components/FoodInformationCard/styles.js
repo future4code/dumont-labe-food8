@@ -48,7 +48,7 @@ export const Quantity = styled.span`
 `
 export const FoodName = styled.h3`
   height: 18px;
-  margin: 15px 49px 8px 16px;
+  margin: 15px 0 8px 16px;
   font-size: 16px;
   letter-spacing: -0.39px;
   color: #5cb646;
@@ -71,7 +71,6 @@ export const PriceButtomContainer = styled.div`
   margin: 0;
 `
 export const FoodPrice = styled.span`
-  width: 118px;
   height: 19px;
   align-self: stretch;
   margin: 10px 8px 5px 16px;

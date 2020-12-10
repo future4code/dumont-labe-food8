@@ -13,6 +13,7 @@ import useProtectedPage from '../../hooks/useProtectedPage';
 /*Components*/
 import FoodInformationCard from '../../components/FoodInformationCard';
 import Header from '../../components/Header';
+import Loading from '../../components/Loading';
 
 /*Tags styleds*/
 import {
@@ -56,7 +57,7 @@ export default function RestaurantDetails() {
       console.log(error.message)
     })
 
-  }, [id, token])
+  }, [addQuantityProperty, id, token])
 
   const addQuantityProperty = (restaurantInfo) => {
     let newProducts
@@ -128,7 +129,7 @@ export default function RestaurantDetails() {
       <Header />
       <RestaurantDetailsContainer>
         {Object.entries(states.cart).length === 0 ? (
-          <h1>Carregando...</h1>
+          <Loading />
         ) : (
             <div>
               <CardRestaurantDetails>

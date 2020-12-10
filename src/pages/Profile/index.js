@@ -1,18 +1,28 @@
-import React, { useState } from 'react';
-import { BoxAdress, BoxInline, NewAdress, Box, IconEdit, Subtotal, Date, Container, Name, Phone, Retangle, RegisteredAdress, Email, OrderHistory, Line, RestaurantBox, ContainerOrder, Restaurant } from "./styles"
+import React, { useContext, useEffect, useState } from 'react';
+import { BoxAdress, BoxInline, NewAdress, Box, IconEdit, Subtotal, Date, Container, Name, Cpf, Retangle, RegisteredAdress, Email, OrderHistory, Line, RestaurantBox, ContainerOrder, Restaurant } from "./styles"
 import iconEdit from "../../assets/icons/edit.svg"
 import EditProfile from "./EditProfile"
 import { useHistory, useParams } from 'react-router-dom';
 import { goToAdressPage } from '../../routes/coordinator';
+import GlobalStateContext from '../../global/GlobalStateContext';
+import { getProfile, updateProfile } from '../../services/user';
+import useProtectedPage from '../../hooks/useProtectedPage';
 
 
 export default function Profile() {
   const [page, setPage] = useState(false)
+  const [profile, setProfile] = useState({})
+
   const history = useHistory()
+  useProtectedPage()
 
   const changePage = () => {
     setPage(true)
   }
+
+  useEffect(() => {
+    getProfile(setProfile)
+  }, [])
 
   return (
     <React.Fragment>
@@ -20,9 +30,9 @@ export default function Profile() {
         <Container>
           <BoxInline>
             <Box>
-              <Name>Nome estático</Name>
-              <Email>E-mail estático</Email>
-              <Phone>telefone estático 00000</Phone>
+              <Name>{profile.name}</Name>
+              <Email>{profile.email}</Email>
+              <Cpf>{profile.cpf}</Cpf>
             </Box>
             <IconEdit onClick={changePage} src={iconEdit} />
           </BoxInline>
@@ -32,7 +42,7 @@ export default function Profile() {
               <RegisteredAdress>Endereço cadastrado</RegisteredAdress>
               <NewAdress>Rua blablabla, 52</NewAdress>
             </BoxAdress>
-            <IconEdit onClick={()=>goToAdressPage(history)} src={iconEdit} />
+            <IconEdit onClick={() => goToAdressPage(history)} src={iconEdit} />
           </Retangle>
 
           <OrderHistory>Histórico de pedidos</OrderHistory>

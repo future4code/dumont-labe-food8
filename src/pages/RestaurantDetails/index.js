@@ -46,19 +46,6 @@ export default function RestaurantDetails() {
   const { id } = useParams();
   const token = localStorage.getItem('token')
 
-  useEffect(() => {
-    api.get(`/restaurants/${id}`, {
-      headers: {
-        auth: token
-      }
-    }).then((res) => {
-      addQuantityProperty(res.data.restaurant)
-    }).catch((error) => {
-      console.log(error.message)
-    })
-
-  }, [addQuantityProperty, id, token])
-
   const addQuantityProperty = (restaurantInfo) => {
     let newProducts
     let newInfosRestaurant
@@ -74,6 +61,22 @@ export default function RestaurantDetails() {
     }
 
   }
+
+  useEffect(() => {
+    api.get(`/restaurants/${id}`, {
+      headers: {
+        auth: token
+      }
+    }).then((res) => {
+      addQuantityProperty(res.data.restaurant)
+      console.log("teste")
+    }).catch((error) => {
+      console.log(error.message)
+    })
+
+  }, [addQuantityProperty, id, token])
+
+  
 
   const handleModal = (id) => {
     setCardId(id)

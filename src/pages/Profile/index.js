@@ -4,7 +4,7 @@ import iconEdit from "../../assets/icons/edit.svg"
 import EditProfile from "./EditProfile"
 import { useHistory } from 'react-router-dom';
 import { goToAdressPage } from '../../routes/coordinator';
-import { getAddress, getProfile } from '../../services/user';
+import { getAddress, getOrderHistory, getProfile } from '../../services/user';
 import useProtectedPage from '../../hooks/useProtectedPage';
 
 
@@ -12,6 +12,7 @@ export default function Profile() {
   const [page, setPage] = useState(false)
   const [profile, setProfile] = useState({})
   const [userAddress, setUserAddress] = useState(undefined)
+  const [orders, setOrders] = useState([])
 
   const history = useHistory()
   useProtectedPage()
@@ -21,13 +22,14 @@ export default function Profile() {
   }
 
   useEffect(() => {
+    getOrderHistory(setOrders)
     getProfile(setProfile)
     getAddress(setUserAddress)
-  }, [])
+  }, [page])
 
   return (
     <React.Fragment>
-      {page ? <EditProfile setPage={page} /> :
+      {page ? <EditProfile setPage={setPage} /> :
         <Container>
           <BoxInline>
             <Box>
@@ -54,11 +56,18 @@ export default function Profile() {
           <OrderHistory>Histórico de pedidos</OrderHistory>
           <ContainerOrder>
             <Line></Line>
-            <RestaurantBox>
-              <Restaurant>Bulguer Vila Mada</Restaurant>
-              <Date>23 de outubro de 2019</Date>
-              <Subtotal>Bulguer Vila Mada</Subtotal>
-            </RestaurantBox>
+
+            {orders.length > 0 ? orders.map((order) => {
+              return (
+                <RestaurantBox>
+                  <Restaurant>{order.restaurant.name}</Restaurant>
+                  <Date>{order.date}</Date>
+                  <Subtotal>{order.price}</Subtotal>
+                </RestaurantBox>
+              )
+            }) : <p>Você não realizou nenhum pedido =/</p>}
+
+
           </ContainerOrder>
         </Container>
       }

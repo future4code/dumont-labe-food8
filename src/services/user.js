@@ -25,16 +25,12 @@ export const signup = (body, history) => {
     })
 }
 
-export const updateProfile = (body, history) => {
+export const updateProfile = (body) => {
   api.put('/profile', body, {
     headers: {
       auth: localStorage.getItem("token")
     }
-  }).then(response => {
-
-    localStorage.setItem("token", response.data.token)
-    alert("Cadastro atualizado")
-    goToHome(history)
+  }).then(() => {
 
   }).catch(error => {
     alert("Erro na atualização do cadastro")
@@ -42,13 +38,13 @@ export const updateProfile = (body, history) => {
   })
 }
 
-export const getOrderHistory = () => {
+export const getOrderHistory = (setOrders) => {
   api.get('/orders/history', {
     headers: {
       auth: localStorage.getItem("token")
     }
   }).then(response => {
-    console.log(response.data)
+    setOrders(response.data.orders)
 
   }).catch(error => {
     console.log(error.message)

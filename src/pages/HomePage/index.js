@@ -5,12 +5,13 @@ import RestaurantCard from '../../components/RestaurantCard'
 import Filter from '../../components/Filter'
 import useProtectedPage from '../../hooks/useProtectedPage'
 import axios from "axios"
+import { goToRestaurantsDetails } from '../../routes/coordinator';
+import { useHistory } from 'react-router-dom';
 
 export default function HomePage() {
   const [restaurants, setRestaurants] = useState(undefined)
   const [filteredRestaurants, setFilteredRestaurants] = useState([])
   const [categoryFilter, setCategoryFilter] = useState(undefined)
-
   useProtectedPage()
 
   useEffect(() => {
@@ -43,6 +44,7 @@ export default function HomePage() {
 
             return (
               <RestaurantCard
+                id={item.id}            
                 key={item.id}
                 name={item.name}
                 deliveryTime={item.deliveryTime}

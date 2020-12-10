@@ -1,5 +1,5 @@
 // React
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 // Context
 import GlobalStateContext from '../../global/GlobalStateContext';
@@ -12,12 +12,24 @@ import { AddressContainer, AddressTitle, Title, Shipping, Wrapper, Total, TotalP
 
 // Components
 import CartFoodInfoCard from '../../components/CartFoodInfoCard'
+import { getAddress } from '../../services/user';
 
 
 export default function CartPage() {
   const { states, setters } = useContext(GlobalStateContext)
-  console.log(states, setters)
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState('')
+  const [userAddress, setUserAddress] = useState(undefined)
+
+  useEffect(() => {
+    getAddress(setUserAddress)
+    getCart()
+  }, [])
+
+  const getCart = () => {
+    const storedCart = JSON.parse(localStorage.getItem("cart"))
+    console.log(storedCart)
+    setters.setCart(storedCart)
+  }
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -27,14 +39,20 @@ export default function CartPage() {
     <Wrapper>
       <AddressContainer>
         <AddressTitle>Endereço de entrega</AddressTitle>
-        <p>Rua paralelepidedo, 001</p>
+        {userAddress ?
+          <p>{`${userAddress.street}, ${userAddress.number} - ${userAddress.neighbourhood}`}</p>
+          : <p>Buscando seu endereço..</p>
+        }
       </AddressContainer>
 
       {states.cart.length ? states.cart.map((product) => {
         return (
           <CartFoodInfoCard
             quantity={product.quantity}
-            photo={product.photo}
+            photoUrl={product.photoUrl}
+            name={product.name}
+            description={product.description}
+            price={product.price}
           />
         )
       })

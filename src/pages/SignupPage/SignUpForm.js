@@ -4,7 +4,7 @@ import { useForm } from '../../hooks/useForm'
 import { signup } from '../../services/user'
 import { InputLabel, IconButton, InputAdornment, OutlinedInput, FormControl, TextField } from '@material-ui/core'
 import { Visibility, VisibilityOff } from "@material-ui/icons"
-import CpfCnpj from "@react-br-forms/cpf-cnpj-mask"
+// import CpfCnpj from "@react-br-forms/cpf-cnpj-mask"
 import logo from "../../assets/img/small-logo.png"
 import { ImageLogo, Register, FormContainer, Wrapper, ButtonStyled } from "./styles"
 

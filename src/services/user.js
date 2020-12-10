@@ -16,13 +16,13 @@ export const login = (body, history) => {
 
 export const signup = (body, history) => {
   api.post('/signup', body)
-  .then(response => {
-    localStorage.setItem("token", response.data.token)
-    goToAdressPage(history)
-  }).catch(error => {
-    alert("Por favor, confirme seus dados!")
-    console.log(error.message)
-  })
+    .then(response => {
+      localStorage.setItem("token", response.data.token)
+      goToAdressPage(history)
+    }).catch(error => {
+      alert("Por favor, confirme seus dados!")
+      console.log(error.message)
+    })
 }
 
 export const updateProfile = (body, history) => {
@@ -31,10 +31,10 @@ export const updateProfile = (body, history) => {
       auth: localStorage.getItem("token")
     }
   }).then(response => {
-    localStorage.setItem("token", response.data.token)  
+    localStorage.setItem("token", response.data.token)
     alert("Cadastro atualizado")
     goToHome(history)
-    
+
   }).catch(error => {
     alert("Erro na atualização do cadastro")
     console.log(error.message)
@@ -42,18 +42,30 @@ export const updateProfile = (body, history) => {
 }
 
 export const getProfile = (setProfile) => {
-  console.log("setProfile", setProfile)
   api.get('/profile', {
     headers: {
       auth: localStorage.getItem("token")
     }
   })
-  .then(response => {
-    setProfile(response.data.user)
-    
-  }).catch(error => {
-    console.log(error.message)
+    .then(response => {
+      setProfile(response.data.user)
+
+    }).catch(error => {
+      console.log(error.message)
+    })
+}
+
+export const getAddress = (setAddress) => {
+  api.get('/profile/address', {
+    headers: {
+      auth: localStorage.getItem("token")
+    }
   })
+    .then(response => {
+      setAddress(response.data.address)
+    }).catch(error => {
+      console.log(error.message)
+    })
 }
 
 export const address = (body, history) => {

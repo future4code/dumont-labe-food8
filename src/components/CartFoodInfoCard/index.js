@@ -19,23 +19,23 @@ export default function CartFoodInfoCard(props) {
 
   return (
     <CardContainer>
-      <FoodImg src={props.photo} alt={"Foto da comida"} />
+      <FoodImg src={props.photoUrl} alt={"Foto da comida"} />
 
       <InfoFoodContainer>
 
         <NameIngredientsContainer>
           <NameQuantityContainer>
-            <FoodName>Nome da comida</FoodName>
+            <FoodName>{props.name}</FoodName>
             <Quantity quantity={props.quantity}>{props.quantity}</Quantity>
           </NameQuantityContainer>
 
           <IngredientsContainer>
-            descrição
+            {props.description}
           </IngredientsContainer>
         </NameIngredientsContainer>
 
         <PriceButtomContainer>
-          <FoodPrice>{new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(100)}</FoodPrice>
+          <FoodPrice>{new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(props.price)}</FoodPrice>
 
           <Button adding={false}>-1</Button>
           <Button adding={true}>+1</Button>

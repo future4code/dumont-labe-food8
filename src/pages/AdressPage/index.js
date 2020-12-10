@@ -13,14 +13,13 @@ export default function SignupPage() {
   const history = useHistory()
   const { form, onChange } = useForm({ street: "", number: "", complement: "", neighbourhood: "", city: "", state: "" })
 
-  const handleInput = (event) => {
-    const { value, name } = event.target
-    onChange(value, name)
-  }
+  // const handleInput = (event) => {
+  //   const { value, name } = event.target
+  //   onChange(value, name)
+  // }
 
   const handleSubmission = (event) => {
     event.preventDefault()
-    
     address(form, history)
   }
 
@@ -38,7 +37,7 @@ export default function SignupPage() {
           type="text"
           name="street"
           placeholder="Rua"
-          onChange={handleInput}
+          onChange={onChange}
           style={{ margin: '8px 0' }}
           required
         />
@@ -50,7 +49,7 @@ export default function SignupPage() {
           type="text"
           name="number"
           placeholder="Número"
-          onChange={handleInput}
+          onChange={onChange}
           style={{ margin: '8px 0' }}
           required
         />
@@ -62,7 +61,7 @@ export default function SignupPage() {
           type="text"
           name="complement"
           placeholder="Complemento"
-          onChange={handleInput}
+          onChange={onChange}
           style={{ margin: '8px 0' }}
         />
         <TextField
@@ -73,7 +72,7 @@ export default function SignupPage() {
           type="text"
           name="neighbourhood"
           placeholder="Bairro"
-          onChange={handleInput}
+          onChange={onChange}
           style={{ margin: '8px 0' }}
           required
         />
@@ -85,7 +84,7 @@ export default function SignupPage() {
           type="text"
           name="city"
           placeholder="Cidade"
-          onChange={handleInput}
+          onChange={onChange}
           style={{ margin: '8px 0' }}
           required
         />
@@ -97,12 +96,12 @@ export default function SignupPage() {
           type="text"
           name="state"
           placeholder="Estado"
-          onChange={handleInput}
+          onChange={onChange}
           style={{ margin: '8px 0' }}
           required
         />
 
-        <ButtonStyled>SALVAR</ButtonStyled>
+        <ButtonStyled>Salvar</ButtonStyled>
       </FormContainer>
 
     </Wrapper>

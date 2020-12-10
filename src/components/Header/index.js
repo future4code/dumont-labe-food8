@@ -38,22 +38,22 @@ const Title = styled.div`
 export default function Header() {
      return (
           <Bar>
-               <Route exact path={'/login'}>
+               <Route exact path={'/entrar'}>
                     <Title>Login</Title>
                </Route>
-               <Route exact path={'/signup'}>
+               <Route exact path={'/cadastro'}>
                     <Title>Signup</Title>
                </Route>
                <Route exact path={'/home'}>
                     <Title>Home</Title>
                </Route>
-               <Route exact path={'/restaurant/:id'}>
+               <Route exact path={'/restaurante/:id'}>
                     <Title>Restaurante</Title>
                </Route>
-               <Route exact path={'/cart'}>
+               <Route exact path={'/carrinho'}>
                     <Title>Carrinho</Title>
                </Route>
-               <Route exact path={'/profile'}>
+               <Route exact path={'/perfil'}>
                     <Title>Perfil</Title>
                </Route>
           </Bar>

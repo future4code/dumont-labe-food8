@@ -12,11 +12,9 @@ const SearchField = (props) => {
   }
 
   const filterByText = () => {
-    console.log(props.allRestaurants)
     const filteredArray = props.allRestaurants.restaurants.filter((item) => {
       return item.name.toLowerCase().includes(searchTerm.toLowerCase())
     })
-    console.log(filteredArray)
     props.setSearch(filteredArray)
   }
 

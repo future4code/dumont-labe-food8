@@ -18,25 +18,25 @@ export default function Router() {
             <Route exact path={'/'}>
                 <SplashScreen />
             </Route>
-            <Route exact path={'/login'}>
+            <Route exact path={'/entrar'}>
                 <LoginPage />
             </Route>
-            <Route exact path={'/signup'}>
+            <Route exact path={'/cadastro'}>
                 <SignupPage />
             </Route>
-            <Route exact path={'/signup/adress'}>
+            <Route exact path={'/cadastro/endereco'}>
                 <AdressPage/>
             </Route>
             <Route exact path={'/home'}>
                 <HomePage />
             </Route>
-            <Route exact path={'/restaurant/:id'}>
+            <Route exact path={'/restaurante/:id'}>
                 <RestaurantDetails />
             </Route>
-            <Route exact path={'/cart'}>
+            <Route exact path={'/carrinho'}>
                 <CartPage />
             </Route>
-            <Route exact path={'/profile'}>
+            <Route exact path={'/perfil'}>
                 <Profile />
             </Route>
             <Route>

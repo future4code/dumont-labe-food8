@@ -1,20 +1,20 @@
 export const goToLogin = (history) => {
-  history.push('/login')
+  history.push('/entrar')
 }
 export const goToSignUp = (history) => {
-  history.push('/signup')
+  history.push('/cadastro')
 }
 export const goToHome = (history) => {
   history.push('/home')
 }
 export const goToProfile = (history) => {
-  history.push('/profile')
+  history.push('/perfil')
 }
 
 export const goToRestaurantsDetails = (history, id) => {
-  history.push(`/restaurants/${id}`)
+  history.push(`/restaurante/${id}`)
 }
 
 export const goToAdressPage = (history) => {
-  history.push('/signup/adress')
+  history.push('/cadastro/endereco')
 }

@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BoxAdress, BoxInline, NewAdress, Box, IconEdit, Subtotal, Date, Container, Name, Cpf, Retangle, RegisteredAdress, Email, OrderHistory, Line, RestaurantBox, ContainerOrder, Restaurant } from "./styles"
 import iconEdit from "../../assets/icons/edit.svg"
 import EditProfile from "./EditProfile"
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { goToAdressPage } from '../../routes/coordinator';
-import GlobalStateContext from '../../global/GlobalStateContext';
-import { getProfile, updateProfile } from '../../services/user';
+import { getProfile } from '../../services/user';
 import useProtectedPage from '../../hooks/useProtectedPage';
 
 

@@ -27,9 +27,9 @@ export default function FoodInformationCard(props) {
   }
 
   const removeQuantityCard = (id) => {
-      setViewQuantity(false)
-      setQuantityItem(0)
-      props.remove(id)
+    setViewQuantity(false)
+    setQuantityItem(0)
+    props.remove(id)
   }
 
   return (

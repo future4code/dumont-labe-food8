@@ -67,7 +67,6 @@ export default function RestaurantDetails() {
 
   const addToCart = (event) => {
     event.preventDefault()
-    setQuantity(quantity)
     handleModal()
 
     const product = infosRestaurant.products.filter(product => {

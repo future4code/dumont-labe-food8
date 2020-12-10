@@ -71,7 +71,6 @@ export default function RestaurantDetails() {
 
       setters.setCart(newInfosRestaurant)
     }
-
   }
 
   const handleModal = (id) => {

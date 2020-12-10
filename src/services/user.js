@@ -2,7 +2,7 @@
 import api from './api';
 
 /*Coordenador de rotas */
-import { goToHome, goToAdressPage } from "../routes/coordinator";
+import { goToProfile, goToHome, goToAdressPage } from "../routes/coordinator";
 
 export const login = (body, history) => {
   api.post('/login', body).then(response => {
@@ -31,9 +31,11 @@ export const updateProfile = (body, history) => {
       auth: localStorage.getItem("token")
     }
   }).then(response => {
+
     localStorage.setItem("token", response.data.token)
     alert("Cadastro atualizado")
     goToHome(history)
+
   }).catch(error => {
     alert("Erro na atualização do cadastro")
     console.log(error.message)

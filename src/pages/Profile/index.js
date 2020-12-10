@@ -25,7 +25,7 @@ export default function Profile() {
 
   return (
     <React.Fragment>
-      {page ? <EditProfile /> :
+      {page ? <EditProfile setPage={page} /> :
         <Container>
           <BoxInline>
             <Box>

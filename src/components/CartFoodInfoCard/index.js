@@ -26,7 +26,7 @@ export default function CartFoodInfoCard(props) {
         <NameIngredientsContainer>
           <NameQuantityContainer>
             <FoodName>Nome da comida</FoodName>
-            <Quantity quantity={5}>5</Quantity>
+            <Quantity quantity={props.quantity}>{props.quantity}</Quantity>
           </NameQuantityContainer>
 
           <IngredientsContainer>

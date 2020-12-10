@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+// React
+import React, { useContext, useState } from 'react';
 
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
+// Context
+import GlobalStateContext from '../../global/GlobalStateContext';
 
+// Material-UI
+import { Radio, RadioGroup, FormControlLabel, FormControl } from '@material-ui/core';
+
+// Styles
 import { AddressContainer, AddressTitle, Title, Shipping, Wrapper, Total, TotalPrice, CheckBox, PaymentMethod, Button, ButtonContainer } from "./styles"
+
+// Components
 import CartFoodInfoCard from '../../components/CartFoodInfoCard'
 
+
 export default function CartPage() {
+  const { states, setters } = useContext(GlobalStateContext)
+  console.log(states, setters)
   const [value, setValue] = useState('');
 
   const handleChange = (event) => {
@@ -22,14 +30,22 @@ export default function CartPage() {
         <p>Rua paralelepidedo, 001</p>
       </AddressContainer>
 
-      <Title>Carrinho vazio/cheio</Title>
+      {states.cart.length ? states.cart.map((product) => {
+        return (
+          <CartFoodInfoCard
+            quantity={product.quantity}
+            photo={product.photo}
+          />
+        )
+      })
+        :
+        <Title>Carrinho vazio</Title>
+      }
 
-      <CartFoodInfoCard />
-
-      <Shipping>Frete R$0,00</Shipping>
+      <Shipping>Frete {new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(0)}</Shipping>
       <Total>
         <p>SUBTOTAL</p>
-        <TotalPrice>R$00,00</TotalPrice>
+        <TotalPrice>{new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(0)}</TotalPrice>
       </Total>
       <PaymentMethod>Forma de pagamento</PaymentMethod>
 
@@ -42,7 +58,7 @@ export default function CartPage() {
         </FormControl>
       </CheckBox>
       <ButtonContainer>
-        <Button>CONFIRMAR</Button>
+        <Button>Confirmar</Button>
       </ButtonContainer>
     </Wrapper>
   )

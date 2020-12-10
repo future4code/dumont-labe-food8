@@ -13,23 +13,19 @@ import { AddressContainer, AddressTitle, Title, Shipping, Wrapper, Total, TotalP
 // Components
 import CartFoodInfoCard from '../../components/CartFoodInfoCard'
 import { getAddress } from '../../services/user';
+import { goBack, goToRestaurantsDetails } from '../../routes/coordinator';
+import { useHistory } from 'react-router-dom';
 
 
 export default function CartPage() {
   const { states, setters } = useContext(GlobalStateContext)
   const [value, setValue] = useState('')
   const [userAddress, setUserAddress] = useState(undefined)
+  const history = useHistory()
 
   useEffect(() => {
     getAddress(setUserAddress)
-    getCart()
   }, [])
-
-  const getCart = () => {
-    const storedCart = JSON.parse(localStorage.getItem("cart"))
-    console.log(storedCart)
-    setters.setCart(storedCart)
-  }
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -37,6 +33,7 @@ export default function CartPage() {
 
   return (
     <Wrapper>
+      <button onClick={() => goToRestaurantsDetails(history, 5)}>voltar</button>
       <AddressContainer>
         <AddressTitle>Endereço de entrega</AddressTitle>
         {userAddress ?
@@ -45,16 +42,19 @@ export default function CartPage() {
         }
       </AddressContainer>
 
-      {states.cart.length ? states.cart.map((product) => {
-        return (
-          <CartFoodInfoCard
-            quantity={product.quantity}
-            photoUrl={product.photoUrl}
-            name={product.name}
-            description={product.description}
-            price={product.price}
-          />
-        )
+      {Object.entries(states.cart).length !== 0 ? states.cart.products.map((product) => {
+        if (product.quantity > 0) {
+          return (
+            <CartFoodInfoCard
+              key={product.id}
+              quantity={product.quantity}
+              photoUrl={product.photoUrl}
+              name={product.name}
+              description={product.description}
+              price={product.price}
+            />
+          )
+        }
       })
         :
         <Title>Carrinho vazio</Title>

@@ -6,7 +6,8 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import HomeIcon from '@material-ui/icons/Home';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PersonIcon from '@material-ui/icons/Person';
-import { Route } from 'react-router-dom';
+import { Route, useHistory } from 'react-router-dom';
+import { goToCart, goToHome, goToProfile } from '../../routes/coordinator';
 
 
 const useStyles = makeStyles({
@@ -16,13 +17,14 @@ const useStyles = makeStyles({
 });
 
 const FooterNav = () => {
+    const history = useHistory()
 
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
 
     return (
-        <Route exact path={["/home", "/carrinho", "/perfil"]}>
+        <Route exact path={["/home", "/carrinho", "/perfil", "/restaurante/:id"]}>
             <BottomNav>
 
                 <BottomNavigation
@@ -33,9 +35,9 @@ const FooterNav = () => {
                     showLabels
                     className={classes.root}
                 >
-                    <BottomNavigationAction icon={<HomeIcon style={{ fontSize: 40 }} />} />
-                    <BottomNavigationAction icon={<ShoppingCartIcon style={{ fontSize: 40 }} />} />
-                    <BottomNavigationAction icon={<PersonIcon style={{ fontSize: 40 }} />} />
+                    <BottomNavigationAction onClick={() => goToHome(history)} icon={<HomeIcon style={{ fontSize: 40 }} />} />
+                    <BottomNavigationAction onClick={() => goToCart(history)} icon={<ShoppingCartIcon style={{ fontSize: 40 }} />} />
+                    <BottomNavigationAction onClick={() => goToProfile(history)} icon={<PersonIcon style={{ fontSize: 40 }} />} />
                 </BottomNavigation>
 
             </BottomNav>

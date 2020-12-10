@@ -34,7 +34,6 @@ export const updateProfile = (body, history) => {
     localStorage.setItem("token", response.data.token)
     alert("Cadastro atualizado")
     goToHome(history)
-
   }).catch(error => {
     alert("Erro na atualização do cadastro")
     console.log(error.message)
@@ -49,7 +48,6 @@ export const getProfile = (setProfile) => {
   })
     .then(response => {
       setProfile(response.data.user)
-
     }).catch(error => {
       console.log(error.message)
     })

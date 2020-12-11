@@ -37,6 +37,7 @@ import {
 } from './styles';
 
 export default function RestaurantDetails() {
+  window.document.title="FutureEats"
   useProtectedPage()
   const { states, setters } = useContext(GlobalStateContext)
   const [openModal, setOpenModal] = useState(false)

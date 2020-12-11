@@ -18,6 +18,7 @@ import { useHistory } from 'react-router-dom';
 
 
 export default function CartPage() {
+  window.document.title="FutureEats"
   const { states, setters } = useContext(GlobalStateContext)
   const [value, setValue] = useState('')
   const [userAddress, setUserAddress] = useState(undefined)

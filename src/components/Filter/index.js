@@ -20,6 +20,7 @@ const Filter = (props) => {
     return (
         <FilterField>
             <FilterText>
+                {filterCategory && <p onClick={() => { handleCategory("") }}>Todos</p>}
                 {filterCategory && filterCategory.map((item) => {
                     return <p onClick={() => { handleCategory(item) }}>{item}</p>
                 })}

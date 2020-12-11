@@ -14,15 +14,16 @@ const Filter = (props) => {
         const filteredArray = props.allRestaurants.restaurants.filter((item) => {
             return item.category.toLowerCase().includes(category.toLowerCase())
         })
+        
         props.setCategory(filteredArray)
     }
 
     return (
         <FilterField>
-            <FilterText>
+            <FilterText >
                 {filterCategory && <p onClick={() => { handleCategory("") }}>Todos</p>}
                 {filterCategory && filterCategory.map((item) => {
-                    return <p onClick={() => { handleCategory(item) }}>{item}</p>
+                    return <p key={item} onClick={() => { handleCategory(item) }}>{item}</p>
                 })}
             </FilterText>
         </FilterField>

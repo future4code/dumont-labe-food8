@@ -6,10 +6,18 @@ export const SplashScreenContainer = styled.main`
   height: 100vh;
   background-color: #000000;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 `
 
 export const Logo = styled.img`
   
+`
+
+export const LoadingContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
 `

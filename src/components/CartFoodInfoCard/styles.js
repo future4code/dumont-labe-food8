@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
 export const CardContainer = styled.article`
-  width: 100%;
+  width: 90vw;
+  max-width: 420px;
   height: 120px;
   display: grid;
   grid-template-columns: 96px 1fr;
   grid-template-rows: 1fr;
-  margin: 7px 0 0;
+  margin: 10px auto;
   border-radius: 8px;
   border: solid 2px #b8b8b8;
 `
@@ -65,13 +66,12 @@ export const IngredientsContainer = styled.div`
 `
 export const PriceButtomContainer = styled.div`
   width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 100px;
   align-items: center;
-  justify-content: space-between;
   margin: 0;
 `
 export const FoodPrice = styled.span`
-  width: 118px;
   height: 19px;
   align-self: stretch;
   margin: 10px 8px 5px 16px;
@@ -80,9 +80,14 @@ export const FoodPrice = styled.span`
   letter-spacing: -0.39px;
   color: #000000;
 `
+export const ButtonsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`
 export const Button = styled.button`
-  width: 90px;
   height: 90%;
+  width: 30px;
   margin: 0 -2px 0 0;
   padding: 7px 25px 7px 20px;
   background-color: #FFFFFF;

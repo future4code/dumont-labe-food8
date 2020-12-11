@@ -4,7 +4,7 @@ import { ButtonStyled } from '../SignupPage/styles';
 export const Wrapper=styled.div`   
   width: 100vw;
   max-width:420px;
-  //height: 100vh;
+  margin-bottom: 70px;
 `    
 export const AddressContainer=styled.div`   
   width: 100vw;
@@ -61,7 +61,8 @@ export const PaymentMethod=styled.p`
 `       
 export const Button=styled(ButtonStyled)`  
   margin: 0 auto;
-  width: 328px;
+  width: 90vw;
+  max-width: 420px;
   display: flex;
   justify-content: center;
   align-items: center;

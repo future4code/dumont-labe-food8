@@ -17,7 +17,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <GlobalState>
         <BrowserRouter>
-          <Route exact path={['/entrar', '/cadastro', '/cadastro/endereco', '/home', '/carrinho', '/perfil']}>
+          <Route exact path={['/cadastro', '/cadastro/endereco', '/home', '/carrinho', '/perfil']}>
             <Header />   
           </Route>       
           <Router />

@@ -7,10 +7,14 @@ import {goToHome} from '../../routes/coordinator';
 /*imagens*/
 import LogoImg from '../../assets/img/small-logo-white.png';
 
+/*Componentes*/
+import Loading from '../../components/Loading';
+
 /*Tags styleds*/
 import {
   SplashScreenContainer,
-  Logo
+  Logo,
+  LoadingContainer
 } from './styles';
 
 export default function SplashScreen() {
@@ -26,6 +30,9 @@ export default function SplashScreen() {
   return (
     <SplashScreenContainer>
       <Logo src={LogoImg}/>
+      <LoadingContainer>
+        <Loading />
+      </LoadingContainer>
     </SplashScreenContainer>
   );
 }

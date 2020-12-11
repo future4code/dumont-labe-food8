@@ -27,7 +27,7 @@ export default function FoodInformationCard(props) {
 
   return (
     <CardContainer>
-      <FoodImg src={props.photo} />
+      <FoodImg src={props.photo} alt={"Foto da comida"}/>
 
       <InfoFoodContainer>
 

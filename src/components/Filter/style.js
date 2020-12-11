@@ -14,6 +14,9 @@ export const FilterField = styled.div`
   height: 4px;          
   width: 4px;              
   border: 1px solid transparent;
+  @media(min-width:421px){
+    border: 1px solid #5cb646;
+  }
 }
 `
 export const FilterText = styled.div`
@@ -28,6 +31,7 @@ export const FilterText = styled.div`
   }
   
   p{
+  cursor: pointer;
   width: 87px;
   height: 18px;
   margin-left: 16px;

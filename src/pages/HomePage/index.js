@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { MainContainer, CardContainer, NoResultsContainer, NoResults } from './styles'
+import { MainContainer, CardContainer, NoResultsContainer, NoResults, SnackBar, Text, IconContainer, TextContainer, Subtotal } from './styles'
 import SearchField from '../../components/SearchField'
 import RestaurantCard from '../../components/RestaurantCard'
 import Filter from '../../components/Filter'
 import useProtectedPage from '../../hooks/useProtectedPage'
 import axios from "axios"
-
+import IconClock from "../../assets/img/clock.svg"
 /*Componentes */
 import Loading from '../../components/Loading';
 import { activeOrder } from '../../services/user';
@@ -17,7 +17,7 @@ export default function HomePage() {
   const [restaurants, setRestaurants] = useState(undefined)
   const [filteredRestaurants, setFilteredRestaurants] = useState([])
   const [categoryFilter, setCategoryFilter] = useState(undefined)
-  const [order, setOrder] = useState({ order: null })
+  const [order, setOrder] = useState(null)
 
   useEffect(() => {
     getOrder()
@@ -67,17 +67,19 @@ export default function HomePage() {
           }))
         }
       </CardContainer>
-      {order && Object.entries(order).length === 0 ? (
-         <div></div>
-      ) : (
-          <div>
-            <p>Pedido em andamento</p>
+      {order &&
+        <SnackBar>
+          <IconContainer>
+            <img src={IconClock} />
+          </IconContainer>
+          <TextContainer>
+            <Text>Pedido em andamento</Text>
             {order.restaurantName}
-            <p>{`SUBTOTAL
+            <Subtotal>{`SUBTOTAL
         ${new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(order.totalPrice)}`}
-            </p>
-          </div>
-        )
+            </Subtotal>
+          </TextContainer>
+        </SnackBar>
       }
     </MainContainer>
   )

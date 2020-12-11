@@ -103,3 +103,18 @@ export const placeOrder = (body, id) => {
     console.log(error.message)
   })
 }
+
+export const activeOrder = (setOrder) => {
+  api.get(`/active-order`,  {
+    headers: {
+      auth: localStorage.getItem("token")
+    }
+  }).then(response => {
+    setOrder(response.data.order)
+    console.log("ActiveOrder", response.data)
+  }).catch(error => {
+    console.log(error.message)
+  })
+}
+
+ 

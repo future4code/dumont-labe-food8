@@ -6,10 +6,11 @@ import { useHistory } from 'react-router-dom';
 import { goToAdressPage } from '../../routes/coordinator';
 import { getAddress, getOrderHistory, getProfile } from '../../services/user';
 import useProtectedPage from '../../hooks/useProtectedPage';
+import { formatDate } from '../../utilities/utilities';
 
 
 export default function Profile() {
-  window.document.title="FutureEats"
+  window.document.title = "FutureEats"
   const [page, setPage] = useState(false)
   const [profile, setProfile] = useState({})
   const [userAddress, setUserAddress] = useState(undefined)
@@ -61,13 +62,14 @@ export default function Profile() {
             {orders.length > 0 ? orders.map((order) => {
               return (
                 <RestaurantBox>
-                  <Restaurant>{order.restaurant.name}</Restaurant>
-                  <Date>{order.date}</Date>
-                  <Subtotal>{order.price}</Subtotal>
+                  <Restaurant>{order.restaurantName}</Restaurant>
+                  <Date>{formatDate(order.expiresAt)}</Date>
+                  <Subtotal>
+                    {`SUBTOTAL ${new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(order.totalPrice)}`}
+                  </Subtotal>
                 </RestaurantBox>
               )
             }) : <p>Você não realizou nenhum pedido =/</p>}
-
 
           </ContainerOrder>
         </Container>

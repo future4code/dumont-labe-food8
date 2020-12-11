@@ -6,15 +6,10 @@ import { CardContainer, CardImage, CardInfo, Info } from './styles'
 
 const RestaurantCard = (props) => {
     const history = useHistory()
-
     return (
-        <CardContainer onClick={() => goToRestaurantsDetails(history, props.id)}>
-
+        <CardContainer onClick={() => goToRestaurantsDetails(history, props.id)} imgUrl={props.image.props.src}>
+            
             <CardInfo>
-
-                <CardImage>
-                    {props.image}
-                </CardImage>
                 <h3>{props.name}</h3>
                 <Info>
                     <p>{`${props.deliveryTime - 10} - ${props.deliveryTime}`} min</p>
@@ -22,6 +17,8 @@ const RestaurantCard = (props) => {
                 </Info>
 
             </CardInfo>
+
+
 
         </CardContainer>
     )

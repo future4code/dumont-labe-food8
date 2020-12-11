@@ -72,6 +72,6 @@ export const ButtonContainer=styled.div`
   width: 100vw;
   max-width:420px;
   height: 42px;
-  margin: 180px 0 16px;
+  margin: 16px 0 16px;
   padding: 0 16px;
 `      

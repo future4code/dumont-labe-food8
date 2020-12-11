@@ -31,11 +31,10 @@ export default function Profile() {
     getAddress(setUserAddress)
   }, [page])
 
-  
+
 
   return (
     <React.Fragment>
-      {console.log(orders)}
       {page ? <EditProfile setPage={setPage} /> :
         <Container>
           <BoxInline>
@@ -64,21 +63,21 @@ export default function Profile() {
           <ContainerOrder>
             <Line></Line>
 
-            {orders.length === 0 ? <Loading /> : 
+            {orders.length === 0 ? <Loading /> :
               orders.map((order) => {
-              if (order.restaurantName === "NotFound") {
-                return <p>Você não realizou nenhum pedido =/</p>
-              }              
-              return (
-                <RestaurantBox>
-                  <Restaurant>{order.restaurantName}</Restaurant>
-                  <Date>{formatDate(order.expiresAt)}</Date>
-                  <Subtotal>
-                    {`SUBTOTAL ${new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(order.totalPrice)}`}
-                  </Subtotal>
-                </RestaurantBox>
-              )
-            })}
+                if (order.restaurantName === "NotFound") {
+                  return <p>Você não realizou nenhum pedido =/</p>
+                }
+                return (
+                  <RestaurantBox>
+                    <Restaurant>{order.restaurantName}</Restaurant>
+                    <Date>{formatDate(order.expiresAt)}</Date>
+                    <Subtotal>
+                      {`SUBTOTAL ${new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(order.totalPrice)}`}
+                    </Subtotal>
+                  </RestaurantBox>
+                )
+              })}
           </ContainerOrder>
         </Container>
       }

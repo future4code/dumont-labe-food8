@@ -2,7 +2,7 @@
 import api from './api';
 
 /*Coordenador de rotas */
-import { goToHome, goToAdressPage } from "../routes/coordinator";
+import { goToHome, goToAdressPage, goBack } from "../routes/coordinator";
 
 export const login = (body, history) => {
   api.post('/login', body).then(response => {
@@ -44,11 +44,11 @@ export const getOrderHistory = (setOrders) => {
       auth: localStorage.getItem("token")
     }
   }).then(response => {
-    if(response.data.orders.length > 0) {
+    if (response.data.orders.length > 0) {
       setOrders(response.data.orders)
     } else {
-      setOrders([{restaurantName: 'NotFound'}])
-    }   
+      setOrders([{ restaurantName: 'NotFound' }])
+    }
 
 
   }).catch(error => {
@@ -90,37 +90,39 @@ export const address = (body, history) => {
   }
   ).then(response => {
     localStorage.setItem("token", response.data.token)
-    goToHome(history)
+    goBack(history)
   }).catch(error => {
     alert("Confirme seus dados, por favor!")
     console.log(error.message)
   })
 }
 
-export const placeOrder = (body, id) => {
+export const placeOrder = (body, id, history) => {
   api.post(`/restaurants/${id}/order`, body, {
     headers: {
       auth: localStorage.getItem("token")
     }
   }).then(response => {
-    console.log("funcionou")
+    goToHome(history)
   }).catch(error => {
+    const errorArray = error.message.split(" ")
+    if (errorArray[errorArray.length - 1] === "409") {
+      alert("Você já tem um pedido em andamento")
+    }
     console.log(error.message)
   })
 }
 
 export const activeOrder = (setOrder) => {
-  api.get(`/active-order`,  {
+  api.get(`/active-order`, {
     headers: {
       auth: localStorage.getItem("token")
     }
   }).then(response => {
     setOrder(response.data.order)
 
-    console.log("ActiveOrder", response.data)
   }).catch(error => {
     console.log(error.message)
   })
 }
 
- 

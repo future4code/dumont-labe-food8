@@ -88,7 +88,7 @@ export const ButtonsContainer = styled.div`
 export const Button = styled.button`
   height: 90%;
   width: 30px;
-  margin: 0 -2px 0 0;
+  margin: 0 -0.5px -4px 0;
   padding: 7px 25px 7px 20px;
   background-color: #FFFFFF;
   cursor: pointer;

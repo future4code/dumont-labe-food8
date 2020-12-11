@@ -13,6 +13,7 @@ import { AddressContainer, AddressTitle, Title, Shipping, Wrapper, Total, TotalP
 // Components
 import CartFoodInfoCard from '../../components/CartFoodInfoCard'
 import { getAddress, placeOrder } from '../../services/user'
+import { useHistory } from 'react-router-dom'
 
 
 export default function CartPage() {
@@ -20,6 +21,8 @@ export default function CartPage() {
   const { states, setters } = useContext(GlobalStateContext)
   const [payMethod, setPayMethod] = useState('')
   const [userAddress, setUserAddress] = useState(undefined)
+
+  const history = useHistory()
 
   useEffect(() => {
     getAddress(setUserAddress)
@@ -82,7 +85,7 @@ export default function CartPage() {
         products: productsArray,
         paymentMethod: payMethod
       }
-      placeOrder(body, states.cart.id)
+      placeOrder(body, states.cart.id, history)
     } else {
       alert("Escolha um produto!")
     }

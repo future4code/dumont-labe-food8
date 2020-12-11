@@ -14,9 +14,6 @@ export default function SignupPage() {
   const { form, onChange } = useForm({ name: "", email: "", cpf: "", password: "", confirmPassword: "" })
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-  //const [cpfCnpj, setCpfCnpj] = useState("")
-  //const [mask, setMask] = useState("");
-
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword)
@@ -29,20 +26,15 @@ export default function SignupPage() {
     event.preventDefault()
   }
 
-  const handleSubmission = (event) => {
-    signup(form, history)
-  }
-
-
   /* para validar as duas senhas */
   const validate = (event) => {
     const passwordOne = form.password
     const passwordTwo = form.confirmPassword
     event.preventDefault()
     if (passwordOne === passwordTwo) {
-      handleSubmission()
+      signup(form, history)
     } else {
-      alert("Please, check your password")
+      alert("Por favor, confira sua senha")
     }
   }
 
@@ -78,13 +70,6 @@ export default function SignupPage() {
           style={{ margin: '8px 0' }}
         />
 
-        {/* <CpfCnpj
-          value={cpfCnpj}
-          onChange={(ev, type) => {
-           setCpfCnpj(ev.target.value);
-           setMask(type === "CPF");
-         }}> */}
-
         <TextField
           variant="outlined"
           size="small"
@@ -98,8 +83,6 @@ export default function SignupPage() {
           required
           style={{ margin: '8px 0' }}
         />
-
-        {/* </CpfCnpj>  */}
 
         <FormControl variant="outlined" required="true" style={{ margin: '8px 0' }}>
           <InputLabel htmlFor="outlined-adornment-password" margin="dense">Senha</InputLabel>

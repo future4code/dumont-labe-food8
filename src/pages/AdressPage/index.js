@@ -12,12 +12,8 @@ export default function SignupPage() {
   window.document.title="FutureEats"
   useProtectedPage()
   const history = useHistory()
-  const { form, onChange } = useForm({ street: "", number: "", complement: "", neighbourhood: "", city: "", state: "" })
 
-  // const handleInput = (event) => {
-  //   const { value, name } = event.target
-  //   onChange(value, name)
-  // }
+  const { form, onChange } = useForm({ street: "", number: "", complement: "", neighbourhood: "", city: "", state: "" })
 
   const handleSubmission = (event) => {
     event.preventDefault()

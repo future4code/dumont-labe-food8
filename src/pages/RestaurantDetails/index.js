@@ -51,7 +51,7 @@ export default function RestaurantDetails() {
     let newProducts
     let newInfosRestaurant
 
-    if (Object.entries(states.cart).length === 0) {
+    if (Object.entries(states.cart).length === 0 || states.cart.id !== restaurantInfo.id) {
       newProducts = restaurantInfo.products.map((product) => {
         return { ...product, quantity: 0 }
       })

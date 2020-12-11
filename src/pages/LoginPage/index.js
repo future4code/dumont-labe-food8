@@ -11,6 +11,7 @@ import logo from "../../assets/img/small-logo.png"
 import { ImageLogo, ButtonStyled } from '../SignupPage/styles'
 
 export default function LoginPage() {
+  window.document.title="FutureEats"
   useUnProtectedPage()
   const history = useHistory()
   const {form, onChange} = useForm({email: "", password:""})

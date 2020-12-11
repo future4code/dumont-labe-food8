@@ -42,6 +42,7 @@ export const CardImage = styled.div`
   
 
   img{
+    object-fit: cover;
     width: 328px;
     height: 120px;
     margin: 0 0 12px;

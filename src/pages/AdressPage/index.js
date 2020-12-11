@@ -9,6 +9,7 @@ import useProtectedPage from '../../hooks/useProtectedPage'
 
 
 export default function SignupPage() {
+  window.document.title="FutureEats"
   useProtectedPage()
   const history = useHistory()
   const { form, onChange } = useForm({ street: "", number: "", complement: "", neighbourhood: "", city: "", state: "" })

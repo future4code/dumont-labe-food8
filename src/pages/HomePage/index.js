@@ -17,7 +17,7 @@ export default function HomePage() {
   const [restaurants, setRestaurants] = useState(undefined)
   const [filteredRestaurants, setFilteredRestaurants] = useState([])
   const [categoryFilter, setCategoryFilter] = useState(undefined)
-  const [order, setOrder] = useState({order:null})
+  const [order, setOrder] = useState({ order: null })
 
   useEffect(() => {
     getOrder()
@@ -35,13 +35,13 @@ export default function HomePage() {
     })
       .catch(err => { console.log(err.message) })
   }
- const getOrder = () => {
-  activeOrder(setOrder)
- }
+  const getOrder = () => {
+    activeOrder(setOrder)
+  }
 
   return (
     <MainContainer>
-           
+
       <SearchField setSearch={setFilteredRestaurants} allRestaurants={restaurants} categoryFilter={setCategoryFilter} />
       <Filter allRestaurants={restaurants} setCategory={setFilteredRestaurants} categoryFilter={setCategoryFilter} />
 
@@ -51,8 +51,8 @@ export default function HomePage() {
           restaurants && (filteredRestaurants.map((item) => {
             if (item.id === "notFound") {
               return <NoResultsContainer key={item.id}>
-                      <NoResults>Não encontramos :(</NoResults>
-                    </NoResultsContainer>
+                <NoResults>Não encontramos :(</NoResults>
+              </NoResultsContainer>
             }
             return (
               <RestaurantCard
@@ -67,13 +67,18 @@ export default function HomePage() {
           }))
         }
       </CardContainer>
-      {order && <div>
-        <p>Pedido em andamento</p>
-        {order.restaurantName}
-        <p>{`SUBTOTAL
+      {order && Object.entries(order).length === 0 ? (
+         <div></div>
+      ) : (
+          <div>
+            <p>Pedido em andamento</p>
+            {order.restaurantName}
+            <p>{`SUBTOTAL
         ${new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(order.totalPrice)}`}
-        </p>
-        </div>}
+            </p>
+          </div>
+        )
+      }
     </MainContainer>
   )
 }

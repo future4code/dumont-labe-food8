@@ -84,19 +84,20 @@ export default function SignupPage() {
            setCpfCnpj(ev.target.value);
            setMask(type === "CPF");
          }}> */}
-        {() => <TextField
-          variant="outlined"
-          size="small"
-          label="CPF"
-          value={form.cpf}
-          type="tel"
-          name="cpf"
-          placeholder="Somente números"
-          pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
-          onChange={onChange}
-          required
-          style={{ margin: '8px 0' }}
-        />}
+        
+            <TextField
+              variant="outlined"
+              size="small"
+              label="CPF"
+              value={form.cpf}
+              type="tel"
+              name="cpf"
+              placeholder="Somente números"
+              pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
+              onChange={onChange}
+              required
+              style={{ margin: '8px 0' }}
+            />
 
         {/* </CpfCnpj>  */}
 

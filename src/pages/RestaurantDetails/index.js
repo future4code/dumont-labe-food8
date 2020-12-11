@@ -60,7 +60,6 @@ export default function RestaurantDetails() {
 
       setters.setCart(newInfosRestaurant)
     }
-
   }
 
   useEffect(() => {

@@ -12,6 +12,7 @@ import {
   IngredientsContainer,
   PriceButtomContainer,
   FoodPrice,
+  ButtonsContainer,
   Button
 } from './styles';
 
@@ -36,9 +37,11 @@ export default function CartFoodInfoCard(props) {
 
         <PriceButtomContainer>
           <FoodPrice>{new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(props.price)}</FoodPrice>
-
-          <Button adding={false}>-1</Button>
-          <Button adding={true}>+1</Button>
+          
+          <ButtonsContainer>
+            <Button adding={false}>-1</Button>
+            <Button adding={true}>+1</Button>
+          </ButtonsContainer>
 
         </PriceButtomContainer>
 

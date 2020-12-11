@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Search } from './styles'
+import { Search, Form } from './styles'
 import { InputAdornment, TextField } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search'
 
@@ -15,22 +15,26 @@ const SearchField = (props) => {
     const filteredArray = props.allRestaurants.restaurants.filter((item) => {
       return item.name.toLowerCase().includes(searchTerm.toLowerCase())
     })
-    props.setSearch(filteredArray)
+
+    if (filteredArray.length === 0) {
+      props.setSearch([{id: 'notFound'}])
+    } else {
+      props.setSearch(filteredArray)
+    }    
   }
 
   return (
     <Search>
-      <form>
         <TextField
           variant="outlined"
-          size="small"
+          size="medium"
           value={searchTerm}
           type="text"
           name="restaurant"
           placeholder="Restaurante"
           onChange={handleChange}
           required
-          style={{ margin: '8px 0' }}
+          style={{ margin: '8px 0 0 0', width: '100%' }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -39,7 +43,6 @@ const SearchField = (props) => {
             )
           }}
         />
-      </form>
     </Search>
   )
 }

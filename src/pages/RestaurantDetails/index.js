@@ -69,7 +69,6 @@ export default function RestaurantDetails() {
       }
     }).then((res) => {
       addQuantityProperty(res.data.restaurant)
-      console.log("teste")
     }).catch((error) => {
       console.log(error.message)
     })

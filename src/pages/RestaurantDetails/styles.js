@@ -5,7 +5,7 @@ export const PageRestaurantContainer = styled.main`
   max-width: 420px;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 0 auto 50px auto;
   position: relative;
 `
 export const RestaurantDetailsContainer = styled.div`

@@ -13,8 +13,6 @@ import { AddressContainer, AddressTitle, Title, Shipping, Wrapper, Total, TotalP
 // Components
 import CartFoodInfoCard from '../../components/CartFoodInfoCard'
 import { getAddress } from '../../services/user';
-import { goBack, goToRestaurantsDetails } from '../../routes/coordinator';
-import { useHistory } from 'react-router-dom';
 
 
 export default function CartPage() {
@@ -22,7 +20,6 @@ export default function CartPage() {
   const { states, setters } = useContext(GlobalStateContext)
   const [value, setValue] = useState('')
   const [userAddress, setUserAddress] = useState(undefined)
-  const history = useHistory()
 
   useEffect(() => {
     getAddress(setUserAddress)
@@ -34,7 +31,6 @@ export default function CartPage() {
 
   return (
     <Wrapper>
-      <button onClick={() => goToRestaurantsDetails(history, 5)}>voltar</button>
       <AddressContainer>
         <AddressTitle>Endereço de entrega</AddressTitle>
         {userAddress ?

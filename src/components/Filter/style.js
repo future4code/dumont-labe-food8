@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 export const FilterField = styled.div`
   width: 100vw;
-  max-width:420px;
+  max-width: 420px;
   padding: 12px 0 12px 8px;
   display: flex;
   flex-direction: wrap;
-  //justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 5px;
+  margin-right: 16px;
   overflow-x: scroll;
   ::-webkit-scrollbar {
   height: 4px;          
@@ -16,31 +16,33 @@ export const FilterField = styled.div`
   border: 1px solid transparent;
 }
 `
-
 export const FilterText = styled.div`
   width: 100vw;
   max-width:420px;
-  height: 42px;
-  padding: 12px 0 0 0;
+  height: 15px;
   display: flex;
   flex-direction: wrap;
+
+  :first-child {
+    margin-left: 18px;
+  }
   
   p{
   width: 87px;
   height: 18px;
-  margin: 0 0 0 8px;
-  font-family: Roboto;
+  margin-left: 16px;
+  margin-right: 18px;
   font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
+  font-weight: bold;
   letter-spacing: -0.39px;
   text-align: center;
   color: #000000;
-}  
-  
-  p:hover{
+
+  &:hover,
+  :active {
     color: #5cb646;
   }
+}  
+  
+
 `

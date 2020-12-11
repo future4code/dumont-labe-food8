@@ -1,21 +1,22 @@
 import styled from 'styled-components'
 
 export const CardContainer = styled.div`
-  width: 360px;
+  width: 90vw;
+  max-width: 420px;
   height: 196px;
-  padding: 8px 16px 0;
-
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
 `
 export const CardInfo = styled.div`
-  width: 328px;
+  width: 100%;
   height: 188px;
-  padding: 0 0 16px;
   border-radius: 8px;
   border: solid 1px #94A6B9;
   margin-top: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 
-  h3{
+  h3 {
     color: #5cb646;
     font-size: 16px; 
     margin-left: 8px;
@@ -24,28 +25,26 @@ export const CardInfo = styled.div`
 export const Info = styled.div`
     display: flex;
     justify-content: space-between;
+    border-radius: 8px 8px 0 0;
 
-    p{
-       font-size: 16px;
-       color: #94A6B9;
-       margin-left: 8px;
-       margin-right: 8px;
-       margin-top: 8px;
-       
+    p {
+        font-size: 16px;
+        color: #94A6B9;
+        margin-left: 8px;
+        margin-right: 8px;
+        margin-top: 8px;
     }
 `
-
 export const CardImage = styled.div`
-  width: 328px;
+  width: 100%;
   height: 120px;
   margin: 0 0 12px;
-  
+  border-radius: 8px 8px 0 0;
 
   img{
-    object-fit: cover;
-    width: 328px;
+    width: 100%;
     height: 120px;
-    margin: 0 0 12px;
+    border-radius: 8px 8px 0 0;
   }
   
 `

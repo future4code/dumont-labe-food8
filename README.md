@@ -52,7 +52,7 @@ Para o desenvolvimento do projeto, foi utilizada a API <span>https://documenter.
 ```bash
 # Versões mínimas ou superiores.
 $ node -v
-v12.16.3
+v12.19.0
 
 $ npm -v
 6.14.5

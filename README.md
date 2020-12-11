@@ -22,6 +22,7 @@
 ## 📝️ Sobre
 Projeto final do curso de Frontend da Labenu. A ideia foi desenvolver um aplicativo parecido com o UberEats, onde o usuário faz os pedidos, acessa o carrinho de compras, finaliza a compra, altera seus dados e verifica o tempo de espera do pedido.
 Para o desenvolvimento do projeto, foi utilizada a API <span>https://documenter.getpostman.com/view/7549981/SWTEdGtT#3203689e-ea05-466a-8a5a-8ebc6c5f271e</span>
+
 ---
 
 ## 🚀️ Apresentação do aplicativo
@@ -33,8 +34,13 @@ Para o desenvolvimento do projeto, foi utilizada a API <span>https://documenter.
 
 ---
 
-### Link do Surge:
+## Link do Surge:
+<h3>
 <a href="http://future-eats8-dumont.surge.sh">Acessar: Future eats 8 Dumont</a>
+</h3>
+
+
+---
 
 ### 🚀️ Tecnologias utilizadas
 

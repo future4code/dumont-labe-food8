@@ -3,18 +3,26 @@ import styled from 'styled-components'
 export const CardContainer = styled.div`
   width: 90vw;
   max-width: 420px;
-  height: 196px;
+  height: 250px;
+  background: url(${(props) => props.imgUrl}) center bottom/cover;
+  border-radius: 10px;
+  margin: 10px auto 0 auto;
   display: flex;
-  justify-content: center;
-  margin: 0 auto;
+  align-items: flex-end;
+  box-shadow: 0 2px 10px 0 rgba(136, 136, 136, 0.77);
+  position: relative;
 `
 export const CardInfo = styled.div`
-  width: 100%;
-  height: 188px;
-  border-radius: 8px;
-  border: solid 1px #94A6B9;
-  margin-top: 8px;
-  margin-bottom: 12px;
+  min-width: 100%;
+  color: #EEE;
+  padding: 15px;
+  background: #FFFFFF;
+  opacity: 0.9;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
 
   h3 {
     color: #5cb646;
@@ -34,17 +42,4 @@ export const Info = styled.div`
         margin-right: 8px;
         margin-top: 8px;
     }
-`
-export const CardImage = styled.div`
-  width: 100%;
-  height: 120px;
-  margin: 0 0 12px;
-  border-radius: 8px 8px 0 0;
-
-  img{
-    width: 100%;
-    height: 120px;
-    border-radius: 8px 8px 0 0;
-  }
-  
 `

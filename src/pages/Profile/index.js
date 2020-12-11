@@ -8,6 +8,8 @@ import { getAddress, getOrderHistory, getProfile } from '../../services/user';
 import useProtectedPage from '../../hooks/useProtectedPage';
 import { formatDate } from '../../utilities/utilities';
 
+import Loading from '../../components/Loading';
+
 
 export default function Profile() {
   window.document.title = "FutureEats"
@@ -29,8 +31,11 @@ export default function Profile() {
     getAddress(setUserAddress)
   }, [page])
 
+  
+
   return (
     <React.Fragment>
+      {console.log(orders)}
       {page ? <EditProfile setPage={setPage} /> :
         <Container>
           <BoxInline>
@@ -59,7 +64,11 @@ export default function Profile() {
           <ContainerOrder>
             <Line></Line>
 
-            {orders.length > 0 ? orders.map((order) => {
+            {orders.length === 0 ? <Loading /> : 
+              orders.map((order) => {
+              if (order.restaurantName === "NotFound") {
+                return <p>Você não realizou nenhum pedido =/</p>
+              }              
               return (
                 <RestaurantBox>
                   <Restaurant>{order.restaurantName}</Restaurant>
@@ -69,8 +78,7 @@ export default function Profile() {
                   </Subtotal>
                 </RestaurantBox>
               )
-            }) : <p>Você não realizou nenhum pedido =/</p>}
-
+            })}
           </ContainerOrder>
         </Container>
       }

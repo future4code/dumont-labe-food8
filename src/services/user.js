@@ -44,7 +44,12 @@ export const getOrderHistory = (setOrders) => {
       auth: localStorage.getItem("token")
     }
   }).then(response => {
-    setOrders(response.data.orders)
+    if(response.data.orders.length > 0) {
+      setOrders(response.data.orders)
+    } else {
+      setOrders([{restaurantName: 'NotFound'}])
+    }   
+
 
   }).catch(error => {
     console.log(error.message)
@@ -111,6 +116,7 @@ export const activeOrder = (setOrder) => {
     }
   }).then(response => {
     setOrder(response.data.order)
+
     console.log("ActiveOrder", response.data)
   }).catch(error => {
     console.log(error.message)

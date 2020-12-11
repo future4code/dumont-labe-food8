@@ -9,6 +9,7 @@ import useProtectedPage from '../../hooks/useProtectedPage';
 
 
 export default function Profile() {
+  window.document.title="FutureEats"
   const [page, setPage] = useState(false)
   const [profile, setProfile] = useState({})
   const [userAddress, setUserAddress] = useState(undefined)

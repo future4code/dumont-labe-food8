@@ -9,6 +9,7 @@ import { goToRestaurantsDetails } from '../../routes/coordinator';
 import { useHistory } from 'react-router-dom';
 
 export default function HomePage() {
+  window.document.title="FutureEats"
   const [restaurants, setRestaurants] = useState(undefined)
   const [filteredRestaurants, setFilteredRestaurants] = useState([])
   const [categoryFilter, setCategoryFilter] = useState(undefined)

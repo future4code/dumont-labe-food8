@@ -45,7 +45,7 @@ export default function Header() {
                     <Title>Signup</Title>
                </Route>
                <Route exact path={'/home'}>
-                    <Title>Home</Title>
+                    <Title>FutureEats</Title>
                </Route>
                <Route exact path={'/restaurante/:id'}>
                     <Title>Restaurante</Title>

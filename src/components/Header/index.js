@@ -1,61 +1,75 @@
 import styled from "styled-components"
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, useHistory } from 'react-router-dom';
+
+/*Material UI*/
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+
+/*Cordenador de rota*/
+import { goBack } from '../../routes/coordinator';
+
+const HeaderContainer = styled.header`
+     width: 100%;
+     display: grid;
+     grid-template-columns: 50px 1fr;
+     grid-template-rows: 1fr;
+`
 
 const Bar = styled.div`
      display: flex;
-     justify-content:center;
-     margin: 0px;
      align-items: center;
+     justify-content: center;
      width: 100%;
-     height: 64px;
-     -webkit-backdrop-filter: blur(10px);
-     backdrop-filter: blur(10px);
-     box-shadow: 0 0.5px 0 0 #b8b8b8;
+     height: 50px;
+     border-bottom: 1px solid #b8b8b8;
      background-color: #ffffff; 
+     text-align: center;
 `;
+
 const Title = styled.div`
      display: flex;
-     justify-content:center;
+     justify-content: stretch;
      align-items: center;
-     width: 175px;
+     margin-right: 50px;
      height: 44px;
-     margin: 20px 92px 0 93px;
-     padding: 13px 42px 12px;
-     width: 91px;
+     text-align: center;
      height: 19px;
-     font-family: Roboto;
      font-size: 16px;
-     font-weight: normal;
-     font-stretch: normal;
-     font-style: normal;
-     line-height: normal;
+     font-weight: bold;
      letter-spacing: -0.39px;
      text-align: center;
      color: #000000;  
 `;
 
 export default function Header() {
+     const history = useHistory()
+
      return (
-          <Bar>
-               <Route exact path={'/entrar'}>
-                    <Title>Login</Title>
-               </Route>
-               <Route exact path={'/cadastro'}>
-                    <Title>Signup</Title>
-               </Route>
-               <Route exact path={'/home'}>
-                    <Title>FutureEats</Title>
-               </Route>
-               <Route exact path={'/restaurante/:id'}>
-                    <Title>Restaurante</Title>
-               </Route>
-               <Route exact path={'/carrinho'}>
-                    <Title>Carrinho</Title>
-               </Route>
-               <Route exact path={'/perfil'}>
-                    <Title>Perfil</Title>
-               </Route>
-          </Bar>
+          <HeaderContainer>
+               <Bar>
+                    <Route exact path={['/cadastro', '/restaurante/:id', '/cadastro/endereco', '/carrinho']}>
+                         <ArrowBackIosIcon size={24} onClick={() => goBack(history)} />
+                    </Route>
+               </Bar>
+
+               <Bar>
+                    <Route exact path={['/entrar', 'cadastrar', '/cadastro/endereco']}>
+                         <Title></Title>
+                    </Route>
+                    <Route exact path={'/home'}>
+                         <Title>FutureEats</Title>
+                    </Route>
+                    <Route exact path={'/restaurante/:id'}>
+                         <Title>Restaurante</Title>
+                    </Route>
+                    <Route exact path={'/carrinho'}>
+                         <Title>Carrinho</Title>
+                    </Route>
+                    <Route exact path={'/perfil'}>
+                         <Title>Perfil</Title>
+                    </Route>
+               </Bar>
+          </HeaderContainer>
+
      );
 }

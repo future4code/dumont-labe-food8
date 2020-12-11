@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { MainContainer, CardContainer } from './styles'
+import { MainContainer, CardContainer, NoResultsContainer, NoResults } from './styles'
 import SearchField from '../../components/SearchField'
 import RestaurantCard from '../../components/RestaurantCard'
 import Filter from '../../components/Filter'
 import useProtectedPage from '../../hooks/useProtectedPage'
 import axios from "axios"
-import { goToRestaurantsDetails } from '../../routes/coordinator';
-import { useHistory } from 'react-router-dom';
+
+/*Componentes */
+import Loading from '../../components/Loading';
+
 
 export default function HomePage() {
-  window.document.title="FutureEats"
+  useProtectedPage()
+  window.document.title = "FutureEats"
   const [restaurants, setRestaurants] = useState(undefined)
   const [filteredRestaurants, setFilteredRestaurants] = useState([])
   const [categoryFilter, setCategoryFilter] = useState(undefined)
-  useProtectedPage()
 
   useEffect(() => {
     getRestaurants()
@@ -36,17 +38,20 @@ export default function HomePage() {
     <MainContainer>
       <SearchField setSearch={setFilteredRestaurants} allRestaurants={restaurants} categoryFilter={setCategoryFilter} />
       <Filter allRestaurants={restaurants} setCategory={setFilteredRestaurants} categoryFilter={setCategoryFilter} />
+
       <CardContainer>
-
-
-        {filteredRestaurants.length === 0 ? <p> Restaurante não encontrado </p> :
+        {filteredRestaurants.length === 0 ? <Loading /> :
 
           restaurants && (filteredRestaurants.map((item) => {
-
+            if (item.id === "notFound") {
+              return <NoResultsContainer key={item.id}>
+                      <NoResults>Não encontramos :(</NoResults>
+                    </NoResultsContainer>
+            }
             return (
               <RestaurantCard
-                id={item.id}            
                 key={item.id}
+                id={item.id}
                 name={item.name}
                 deliveryTime={item.deliveryTime}
                 shipping={item.shipping}
@@ -55,7 +60,6 @@ export default function HomePage() {
             )
           }))
         }
-
       </CardContainer>
     </MainContainer>
   )

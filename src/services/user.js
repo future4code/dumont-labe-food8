@@ -78,7 +78,6 @@ export const getAddress = (setAddress) => {
 }
 
 export const address = (body, history) => {
-
   api.put('/address', body, {
     headers: {
       auth: localStorage.getItem("token")
@@ -89,6 +88,18 @@ export const address = (body, history) => {
     goToHome(history)
   }).catch(error => {
     alert("Confirme seus dados, por favor!")
+    console.log(error.message)
+  })
+}
+
+export const placeOrder = (body, id) => {
+  api.post(`/restaurants/${id}/order`, body, {
+    headers: {
+      auth: localStorage.getItem("token")
+    }
+  }).then(response => {
+    console.log("funcionou")
+  }).catch(error => {
     console.log(error.message)
   })
 }

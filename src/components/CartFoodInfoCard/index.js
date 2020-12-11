@@ -39,8 +39,8 @@ export default function CartFoodInfoCard(props) {
           <FoodPrice>{new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(props.price)}</FoodPrice>
           
           <ButtonsContainer>
-            <Button adding={false}>-1</Button>
-            <Button adding={true}>+1</Button>
+            <Button onClick={() => props.subtractItem(props.id)} adding={false}>-1</Button>
+            <Button onClick={() => props.addItem(props.id)} adding={true}>+1</Button>
           </ButtonsContainer>
 
         </PriceButtomContainer>

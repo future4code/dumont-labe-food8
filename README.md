@@ -31,6 +31,11 @@ Para o desenvolvimento do projeto, foi utilizada a API <span>https://documenter.
 <img src="./src/assets/img/gifProjeto.gif">
 </h1>
 
+---
+
+### Link do Surge:
+<a href="http://future-eats8-dumont.surge.sh">Acessar: Future eats 8 Dumont</a>
+
 ### 🚀️ Tecnologias utilizadas
 
 - ReactJS

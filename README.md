@@ -24,10 +24,11 @@ Projeto final do curso de Frontend da Labenu. A ideia foi desenvolver um aplicat
 Para o desenvolvimento do projeto, foi utilizada a API <span>https://documenter.getpostman.com/view/7549981/SWTEdGtT#3203689e-ea05-466a-8a5a-8ebc6c5f271e</span>
 ---
 
-## 🚀️ Apresentação do site
+## 🚀️ Apresentação do aplicativo
 
-<h1>
-<img src="./src/assets/img/medium-logo.png" alt="Dumont-future-eats">
+<h1 align=center >
+<img src="./src/assets/img/gifSplash.gif">
+<img src="./src/assets/img/gifProjeto.gif">
 </h1>
 
 ### 🚀️ Tecnologias utilizadas
@@ -83,7 +84,7 @@ Agora é só testar em seu navegador!
 
 ### Desenvolvido com 💙️ por
 
-<a href="https://www.linkedin.com">***Bianca Mendes***</a>
+<a href="https://www.linkedin.com/in/bianca-cmendes/">***Bianca Mendes***</a>
 <br/> 
 <a href="https://www.linkedin.com/in/bruno-mugnol/">***Bruno Mugnol dos Santos***</a>
 <br/> 

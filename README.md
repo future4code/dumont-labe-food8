@@ -28,15 +28,15 @@ Para o desenvolvimento do projeto, foi utilizada a API <span>https://documenter.
 ## 🚀️ Apresentação do aplicativo
 
 <h1 align=center >
-<img src="./src/assets/img/gifSplash.gif">
-<img src="./src/assets/img/gifProjeto.gif">
+<img src="src/assets/img/gifSplash.gif">
+<img src="src/assets/img/gifProjeto.gif">
 </h1>
 
 ---
 
 ## Link do Surge:
 <h3>
-<a href="http://future-eats8-dumont.surge.sh">Acessar: Future eats 8 Dumont</a>
+<a href="http://future-eats8-dumont.surge.sh" target="_blank">Acessar: Future eats 8 Dumont</a>
 </h3>
 
 
@@ -95,15 +95,15 @@ Agora é só testar em seu navegador!
 
 ### Desenvolvido com 💙️ por
 
-<a href="https://www.linkedin.com/in/bianca-cmendes/">***Bianca Mendes***</a>
+<a href="https://www.linkedin.com/in/bianca-cmendes/" target="_blank">***Bianca Mendes***</a>
 <br/> 
-<a href="https://www.linkedin.com/in/bruno-mugnol/">***Bruno Mugnol dos Santos***</a>
+<a href="https://www.linkedin.com/in/bruno-mugnol/" target="_blank">***Bruno Mugnol dos Santos***</a>
 <br/> 
-<a href="https://www.linkedin.com/in/ricardo-mejolaro/">***Ricardo Mejolaro***</a>
+<a href="https://www.linkedin.com/in/ricardo-mejolaro/" target="_blank">***Ricardo Mejolaro***</a>
 <br/> 
-<a href="https://www.linkedin.com/in/tainah-bernardo/">***Tainah Boarini Bernardo***</a>
+<a href="https://www.linkedin.com/in/tainah-bernardo/" target="_blank">***Tainah Boarini Bernardo***</a>
 <br/> 
-<a href="https://www.linkedin.com/in/wellingtondebrito/">***Wellington de Brito Souza***</a>
+<a href="https://www.linkedin.com/in/wellingtondebrito/" target="_blank">***Wellington de Brito Souza***</a>
 <br/> 
 <img src="src/assets/img/Linkedin-Logo.png" width="86px">
 

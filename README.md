@@ -1,5 +1,5 @@
 <h1 align=center>
-<img src="./src/assets/img/medium-logo.png" alt="Dumont-future-eats" width="150px"/>
+<img src="src/assets/img/medium-logo.png" alt="Dumont-future-eats" width="150px"/>
 
 ---
 

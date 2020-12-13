@@ -4,17 +4,18 @@ import { useForm } from '../../hooks/useForm'
 import { signup } from '../../services/user'
 import { InputLabel, IconButton, InputAdornment, OutlinedInput, FormControl, TextField } from '@material-ui/core'
 import { Visibility, VisibilityOff } from "@material-ui/icons"
-// import CpfCnpj from "@react-br-forms/cpf-cnpj-mask"
 import logo from "../../assets/img/small-logo.png"
 import { ImageLogo, Register, FormContainer, Wrapper, ButtonStyled } from "./styles"
+import CpfMask from '../../components/CpfMask'
 
 
 export default function SignupPage() {
   const history = useHistory()
-  const { form, onChange } = useForm({ name: "", email: "", cpf: "", password: "", confirmPassword: "" })
+  const { form, onChange } = useForm({ name: "", email: "",  password: "", confirmPassword: "" })
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-
+  const [cpf, setCpf] = useState("")
+ 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword)
   }
@@ -52,7 +53,7 @@ export default function SignupPage() {
           value={form.name}
           type="text"
           name="name"
-          placeholder="Nome"
+          placeholder="Qual seu nome?"
           onChange={onChange}
           required
           style={{ margin: '8px 0' }}
@@ -64,26 +65,24 @@ export default function SignupPage() {
           value={form.email}
           type="email"
           name="email"
-          placeholder="E-mail"
+          placeholder="Qual seu email?"
           onChange={onChange}
           required
           style={{ margin: '8px 0' }}
         />
-
-        <TextField
+        {/* <TextField
           variant="outlined"
           size="small"
-          label="CPF"
+          label="E-mail"
           value={form.cpf}
-          type="tel"
+          type="cpf"
           name="cpf"
-          placeholder="Somente números"
-          pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
+          placeholder="Apenas números"
           onChange={onChange}
           required
           style={{ margin: '8px 0' }}
-        />
-
+        /> */}
+        <CpfMask cpf={cpf} setCpf={setCpf}/> 
         <FormControl variant="outlined" required="true" style={{ margin: '8px 0' }}>
           <InputLabel htmlFor="outlined-adornment-password" margin="dense">Senha</InputLabel>
           <OutlinedInput
@@ -92,7 +91,7 @@ export default function SignupPage() {
             value={form.password}
             type={showPassword ? "text" : "password"}
             name="password"
-            placeholder="Senha"
+            placeholder="Mínimo seis digitos"
             onChange={onChange}
             endAdornment={
               <InputAdornment position="end">

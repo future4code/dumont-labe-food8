@@ -1,68 +1,112 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align=center>
+<img src="src/assets/img/medium-logo.png" alt="Dumont-future-eats" width="150px"/>
 
-## Available Scripts
+---
+<h1 align=center>
+  🚀 FutureEats Mobile ✔️ <br>
+<img src="https://camo.githubusercontent.com/a45bd10a7ea5a30b5665d9869b0ce1324fa90350/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7374617475732d6163746976652d737563636573732e737667" alt="Status" data-canonical-src="https://img.shields.io/badge/status-active-success.svg" style="max-width:100%;">
+<img src="https://camo.githubusercontent.com/890acbdcb87868b382af9a4b1fac507b9659d9bf/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4d49542d626c75652e737667" alt="License" data-canonical-src="https://img.shields.io/badge/license-MIT-blue.svg" style="max-width:100%;">
+</h1>
 
-In the project directory, you can run:
+## 📑️ Índice
 
-### `npm start`
+- [O projeto](#📝️-Sobre)
+- [Apresentação Gif](#🚀️-Apresentação-do-aplicativo)
+- [Como usar](#💾️-Como-baixar/testar-o-projeto)
+- [Contato](#-Desenvolvido-com-💙️-por)
+- [Licença](#-Licença)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## 📝️ Sobre
+Projeto final do curso de Frontend da Labenu. A ideia foi desenvolver um aplicativo parecido com o UberEats, onde o usuário faz os pedidos, acessa o carrinho de compras, finaliza a compra, altera seus dados e verifica o tempo de espera do pedido.
+Para o desenvolvimento do projeto, foi utilizada a API <span>https://documenter.getpostman.com/view/7549981/SWTEdGtT#3203689e-ea05-466a-8a5a-8ebc6c5f271e</span>
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀️ Apresentação do aplicativo
 
-### `npm run build`
+<h1 align=center >
+<img src="src/assets/img/gifSplash.gif">
+<img src="src/assets/img/gifProjeto.gif">
+</h1>
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Link do Surge:
+<h3>
+<a href="http://future-eats8-dumont.surge.sh" target="_blank">Acessar: Future eats 8 Dumont</a>
+</h3>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 🚀️ Tecnologias utilizadas
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- ReactJS
+- API: <span>https://documenter.getpostman.com/view/7549981/SWTEdGtT#3203689e-ea05-466a-8a5a-8ebc6c5f271e</span>
+- Material-UI
+- Styled-components
+- Axios
+- React-dom-router
+- Context
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+---
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### 💾️ Como baixar/testar o projeto
 
-## Learn More
+- Você irá precisar instalar o [Git](https://git-scm.com/), [NodeJS](https://nodejs.org/pt-br/download/) + [Visual Studio code](https://code.visualstudio.com/).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+```bash
+# Versões mínimas ou superiores.
+$ node -v
+v12.19.0
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+$ npm -v
+6.14.5
+```
 
-### Analyzing the Bundle Size
+- Para configurar, no bash digite os seguinte códigos:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+```bash
+# Clonar o repositório
+$ git clone https://github.com/future4code/dumont-labe-food8.git
 
-### Making a Progressive Web App
+#Entrar no diretório
+$ cd dumont-labe-food
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+#Abrir projeto no VsCode ou com seu prompt de comando de preferência
+code . ||  cd dumont-labe-food (Passo acima) 
 
-### Advanced Configuration
+#Com o terminal aberto rodar o comando
+$ npm install (para instalar as dependências necessárias)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+#Agora só rodar o projeto com o comando
+$ npm start
 
-### Deployment
+#Pronto projeto abrirá em seu navegador padrão
+Agora é só testar em seu navegador!
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+```
+---
 
-### `npm run build` fails to minify
+### Desenvolvido com 💙️ por
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+<a href="https://www.linkedin.com/in/bianca-cmendes/" target="_blank">***Bianca Mendes***</a>
+<br/> 
+<a href="https://www.linkedin.com/in/bruno-mugnol/" target="_blank">***Bruno Mugnol dos Santos***</a>
+<br/> 
+<a href="https://www.linkedin.com/in/ricardo-mejolaro/" target="_blank">***Ricardo Mejolaro***</a>
+<br/> 
+<a href="https://www.linkedin.com/in/tainah-bernardo/" target="_blank">***Tainah Boarini Bernardo***</a>
+<br/> 
+<a href="https://www.linkedin.com/in/wellingtondebrito/" target="_blank">***Wellington de Brito Souza***</a>
+<br/> 
+<img src="src/assets/img/Linkedin-Logo.png" width="86px">
+
+
+### Licença
+
+Este projeto está licenciado sob a licença MIT - consulte a página [LICENSE](https://opensource.org/licenses/MIT) para obter detalhes.

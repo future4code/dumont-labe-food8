@@ -42,7 +42,7 @@ export default function LoginPage() {
           value={form.email}
           type="email"
           name="email"
-          placeholder="E-mail"
+          placeholder="Qual seu email?"
           onChange={onChange}
           required
           style={{margin:'8px 0'}}
@@ -56,7 +56,7 @@ export default function LoginPage() {
           value={form.password}
           type={showPassword ? "text" : "password"}
           name="password"
-          placeholder="Senha"
+          placeholder="Qual sua senha?"
           onChange={onChange}
           endAdornment={
             <InputAdornment position="end">

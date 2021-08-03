@@ -3,10 +3,12 @@ import { SaveButton, FormContainer, TextFieldStyled, Container } from "./stylesP
 import useProtectedPage from '../../hooks/useProtectedPage';
 import { useForm } from '../../hooks/useForm';
 import { updateProfile } from '../../services/user';
+import CpfMask from '../../components/CpfMask'
 
 export default function EditProfile(props) {
   useProtectedPage()
-  const { form, onChange } = useForm({ name: "", email: "", cpf: "" })
+  const { form, onChange } = useForm({ name: "", email: ""})
+  const [cpf, setCpf] = useState("")
 
   const handleSubmission = (event) => {  
     event.preventDefault()  
@@ -24,6 +26,7 @@ export default function EditProfile(props) {
           type="text"
           variant="outlined"
           name="name"
+          placeholder="Nome"
           onChange={onChange}
           style={{ margin: '8px 0' }}
           required>
@@ -36,23 +39,13 @@ export default function EditProfile(props) {
           type="email"
           variant="outlined"
           name="email"
+          placeholder="Email"
           onChange={onChange}
           style={{ margin: '8px 0' }}
           required>
         </TextFieldStyled>
 
-        <TextFieldStyled
-          id="outlined-basic"
-          label="CPF"
-          placeholder= "Somente números"
-          variant="outlined"
-          name="cpf"
-          onChange={onChange}
-          style={{ margin: '8px 0' }}
-          pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
-          required
-        >
-        </TextFieldStyled>
+        <CpfMask cpf={cpf} setCpf={setCpf}/> 
         <SaveButton>Salvar</SaveButton>
 
       </FormContainer>

@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 export const Container = styled.div`
     width: 100vw;
     min-height:100vh;
-    max-width: 414px;  
+    max-width: 420px;  
 `;
 
 export const FormContainer = styled.form`
